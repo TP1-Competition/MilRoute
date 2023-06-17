@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import * as S from './Layout';
+import FooterBar from './component/FooterBar/FooterBar';
+// import './App.css';
+import IsRouter from './routes/IsRouter';
+import Outlayout from './component/Outlayout/Outlayout';
 
 function App() {
+  let vh = window.innerHeight * 0.01;
+
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+window.addEventListener("resize", () => {
+  console.log("resize");
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         tp1 프로젝트 시작
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <S.AppWrapper>
+      <Outlayout/>
+      <S.AppContainer>
+      <IsRouter/>
+      </S.AppContainer>
+      <FooterBar/>
+    </S.AppWrapper>
   );
 }
 
