@@ -13,7 +13,7 @@ export const AppWrapper = styled.div`
   "onemain side twomain"
   "onemain footer twomain"
   ;
-  @media (max-width: 533px) {
+  @media (max-width: 760px) {
     display: grid;
     grid-template-columns: 1fr;
     height: 100vh;
