@@ -14,7 +14,7 @@ export const AppWrapper = styled.div`
   "onemain side twomain"
   "onemain footer twomain"
   ;
-  @media (max-width: 535px) { //760나중에 은지님한테 수정하라고 하기 
+  @media (max-width: 535px) { 
     display: grid;
     grid-template-columns: 1fr;
     height: 100vh;
