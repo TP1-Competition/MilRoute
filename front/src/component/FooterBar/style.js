@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// export const FooterBar=styled.div`
-//     /* height: 30px; */
-//     background-color: red;
-// `
+export const divFooter=styled.div`
+    height: 50px; // don't touch
+    background-color: pink;
+`
