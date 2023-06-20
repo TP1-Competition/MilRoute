@@ -52,11 +52,16 @@ export const HeaderBar=styled.div`
 export const Outlayout = styled.div`
 grid-area: onemain;    
 position: fixed;
-  left: calc(50vw - 420px);
+  left: calc(50vw - 600px);
   width: 350px;
   height: 500px;
   top: 150px;
-  @media (max-width: 900px) {
+  background-color:red;
+  @media (max-width: 1230px) {
+    left: calc(50vw - 550px);
+
+  }
+  @media (max-width: 1130px) {
     display: none;
   }
 `;
