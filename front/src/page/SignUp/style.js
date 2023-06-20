@@ -3,9 +3,26 @@ import styled from 'styled-components';
 export const SignUpContainer = styled.div`
   padding: 20px;
 `;
+export const BackArrowIcon = styled.span`
+  font-size: 1.5rem;
+`;
+
+export const GoBackButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+`;
+
+export const SignUpHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
 
 export const SignUpTitle = styled.h2`
-  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-left: 1rem;
 `;
 
 export const SignUpForm = styled.form`
@@ -30,7 +47,7 @@ export const SignUpInput = styled.input`
   height: 40px;
 `;
 
-export const SignUpErrorMessage = styled.p`
+export const SignUpValidationError = styled.p`
   color: red;
   margin-top: 5px;
 `;
