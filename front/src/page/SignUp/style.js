@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// 회원가입 페이지
+
 export const SignUpContainer = styled.div`
   padding: 20px;
 `;
@@ -62,5 +64,39 @@ export const SignUpSubmitButton = styled.button`
 
   &:hover {
     background: #ff8e00;
+  }
+`;
+
+/* 회원가입 축하 페이지 */
+export const CongratsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+export const CongratsCheckIcon = styled.span`
+  font-size: 5rem;
+  margin-bottom: 2rem;
+`;
+
+export const CongratsMessage = styled.p`
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+export const CongratsButton = styled.button`
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #ececec;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f2f2f2;
   }
 `;
