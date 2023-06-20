@@ -47,6 +47,7 @@ export const SignUpInput = styled.input`
   width: 100%;
   box-sizing: border-box;
   height: 40px;
+  border: 1px solid ${({ isvalid }) => (isvalid === 'false' ? 'red' : '#ccc')};
 `;
 
 export const SignUpValidationError = styled.p`
