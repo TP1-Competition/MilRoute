@@ -106,7 +106,7 @@ const SignUp = () => {
     (e) => {
       e.preventDefault();
 
-      // 유효성 검사
+      // 최종적으로 제출 할 때 유효성 검사
       if (!validateEmail(state.email)) {
         dispatch({ type: 'SET_EMAIL_VALID', payload: false });
         return;
@@ -132,25 +132,38 @@ const SignUp = () => {
           navigate('/congratspage');
         })
         .catch((error) => {
-          navigate('/congratspage');
           console.log(error);
         });
     },
     [state, navigate]
   );
 
+  // Input 값 변경 될 때마다 상태 없데이트 + 유효성 검사
   const handleEmailChange = useCallback((e) => {
-    dispatch({ type: 'SET_EMAIL', payload: e.target.value });
+    const email = e.target.value;
+    dispatch({ type: 'SET_EMAIL', payload: email });
+    const isValid = validateEmail(email);
+    dispatch({ type: 'SET_EMAIL_VALID', payload: isValid });
   }, []);
 
   const handlePasswordChange = useCallback((e) => {
-    dispatch({ type: 'SET_PASSWORD', payload: e.target.value });
+    const password = e.target.value;
+    dispatch({ type: 'SET_PASSWORD', payload: password });
+    const isValid = validatePassword(password);
+    dispatch({ type: 'SET_PASSWORD_VALID', payload: isValid });
   }, []);
 
-  const handleConfirmPasswordChange = useCallback((e) => {
-    dispatch({ type: 'SET_CONFIRM_PASSWORD', payload: e.target.value });
-  }, []);
+  const handleConfirmPasswordChange = useCallback(
+    (e) => {
+      const confirmPassword = e.target.value;
+      dispatch({ type: 'SET_CONFIRM_PASSWORD', payload: confirmPassword });
+      const isValid = state.password === confirmPassword;
+      dispatch({ type: 'SET_CONFIRM_PASSWORD_VALID', payload: isValid });
+    },
+    [state.password]
+  );
 
+  // 유효성 검사
   const validateEmail = (email) => {
     const emailRegex = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$/;
     return emailRegex.test(email);
@@ -169,7 +182,6 @@ const SignUp = () => {
         </S.GoBackButton>
         <S.SignUpTitle>회원정보 입력</S.SignUpTitle>
       </S.SignUpHeader>
-      <S.SignUpTitle>회원정보 입력</S.SignUpTitle>
       <S.SignUpForm>
         <InputEmail
           email={state.email}
