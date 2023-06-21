@@ -9,7 +9,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
 @Import(JpaConfig.class)
@@ -25,8 +28,15 @@ class MemberRepositoryTest {
         Member member = new Member("test@test.com","password1234");
         memberRepository.save(member);
 
-        Member searchMember = memberRepository.findByEmail("test@test.com");
+        Member searchMember = memberRepository.getByEmail("test@test.com");
 
         assertThat(searchMember).isEqualTo(member);
+    }
+
+    @DisplayName("등록되지 않은 이메일의 회원은 찾을 수 없다.")
+    @Test
+    void 등록되지_않은_이메일의_회원은_없다() {
+        assertThatThrownBy(() -> memberRepository.getByEmail("test@test.com"))
+                .isInstanceOf(NoSuchElementException.class);
     }
 }
