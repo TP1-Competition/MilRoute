@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +19,8 @@ public class Member extends BaseEntity {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-z0-9._-]+@[a-z]+[.]+[a-z]{2,3}$");
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{6,20}$");
+
+    private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
 
     @Id
@@ -33,7 +38,7 @@ public class Member extends BaseEntity {
         validateEmail(email);
         validatePassword(password);
         this.email = email;
-        this.password = password;
+        this.password = PASSWORD_ENCODER.encode(password);
     }
 
     private void validateEmail(String email) {
