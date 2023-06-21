@@ -4,6 +4,7 @@ import MyPage from '../page/MyPage/MyPage';
 import ManageInfo from '../page/MyPage/ManageInfo';
 import SignUp from '../page/SignUp/SignUp';
 import CongratsPage from '../page/SignUp/CongratsPage';
+import SignIn from '../page/SignIn/SignIn';
 
 const IsRouter = () => {
   return (
@@ -14,6 +15,7 @@ const IsRouter = () => {
         <Route path='/manageinfo' element={<ManageInfo />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/congratspage' element={<CongratsPage />} />
+        <Route path='/signin' element={<SignIn />} />
       </Routes>
     </Router>
   );
