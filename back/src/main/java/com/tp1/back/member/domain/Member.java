@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 public class Member extends BaseEntity {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-z0-9._-]+@[a-z]+[.]+[a-z]{2,3}$");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{6,20}$");
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +31,7 @@ public class Member extends BaseEntity {
 
     public Member(String email, String password) {
         validateEmail(email);
+        validatePassword(password);
         this.email = email;
         this.password = password;
     }
@@ -39,4 +42,11 @@ public class Member extends BaseEntity {
             throw new IllegalArgumentException("이메일 형식이 올바르지 않습니다.");
         }
     }
+    private void validatePassword(String password) {
+        Matcher matcher = PASSWORD_PATTERN.matcher(password);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("비밀번호 형식이 올바르지 않습니다.");
+        }
+    }
+
 }
