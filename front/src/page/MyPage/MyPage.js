@@ -25,7 +25,7 @@ const MyPage = () => {
       <S.MyPageContainer>
         <S.H2>마이 페이지</S.H2>
         <S.MyPageProfileContainer>
-          <S.MyPageProfileImage src='../Img/hotplace.jpg' alt='Profile' />
+          <S.MyPageProfileImage src='../../Img/hotplace2.jpg' alt='Profile' />
           <S.MyPageNickname>닉네임</S.MyPageNickname>
         </S.MyPageProfileContainer>
         <S.MyPageButton onClick={handleManageInfo}>내 정보 관리</S.MyPageButton>
