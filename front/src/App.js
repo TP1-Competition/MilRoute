@@ -1,9 +1,7 @@
 import * as S from './Layout';
 import FooterBar from './component/FooterBar/FooterBar';
-// import './App.css';
 import IsRouter from './routes/IsRouter';
 import Outlayout from './component/Outlayout/Outlayout';
-import Header from './component/Header/Header';
 
 function App() {
   // Don't touch
@@ -21,7 +19,6 @@ window.addEventListener("resize", () => {
   return (
     <S.AppWrapper>
       <Outlayout/>
-      <Header/>
       <S.AppContainer>
       <IsRouter/>
       </S.AppContainer>
