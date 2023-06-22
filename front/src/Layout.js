@@ -5,12 +5,11 @@ export const AppWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 535px 1fr;
   height: 100vh;
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: auto 50px;
   overflow: hidden;
   margin: 0;
   width: 100vw;
   grid-template-areas: 
-  "onemain header twomain"
   "onemain side twomain"
   "onemain footer twomain"
   ;
@@ -20,7 +19,6 @@ export const AppWrapper = styled.div`
     height: 100vh;
     width: 100vw;
     grid-template-areas: 
-    'header'
     "side"
     'footer';
   height: calc(var(--vh, 1vh) * 100);
