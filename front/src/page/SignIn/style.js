@@ -86,3 +86,9 @@ export const SignInLinkText = styled(Link)`
   text-decoration: none;
   color: #333;
 `;
+
+export const SignInErrorText = styled.p`
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0.5rem;
+`;
