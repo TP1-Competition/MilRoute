@@ -2,6 +2,11 @@ import * as S from './style';
 import { useEffect, useState } from 'react';
 import {AiOutlineClose} from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import '../../css/alert.css'
+
+const swal = withReactContent(Swal);
 
 const AreaChoice=()=>{
   const navigate= useNavigate();
@@ -66,7 +71,20 @@ const AreaChoice=()=>{
 
  
       const searchBtn=()=>{
-        navigate('/'); //지도 페이지로 바꿔야함
+        swal.fire({  
+          heightAuto: false,
+          icon: 'question',
+          text: `"${doRegion} ${siRegion}"으로 검색하시겠습니까?`,
+          confirmButtonText: '확인',
+          confirmButtonColor: '#289951',
+          showCancelButton: true,
+          cancelButtonText: '취소',
+          width: 400,})
+          .then((result)=>{
+            if(result.isConfirmed){
+             return navigate('/'); //지도 페이지로 바꿔야함
+          }
+        })
       }
 
 
