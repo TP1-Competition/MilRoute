@@ -98,6 +98,6 @@ export const HotPlaceCompo = styled.div`
     white-space:nowrap; //공백, 줄바꿈을 하지 않음
 	overflow-x:scroll; 
     img{
-        width: 60vw;
+        max-width: 300px;
     }
 `

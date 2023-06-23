@@ -81,15 +81,20 @@ export const RegionBody = styled.div`
   justify-content: space-between;
  &::-webkit-scrollbar {
     display: none; 
-}
-  
+ }
 `;
 
-export const Region = styled.div`
+export const RegionContain = styled.div`
+  width: 210%;
+  padding-left: 4%;
+`;
+
+export const Region = styled.button`
    border: 1px solid rgb(235, 235, 235);
    border-radius: 20px;
-   padding-top: 7%;
-   height: 30px;
+   margin: 2%;
+   width: 46%;
+   height: 40px;
    text-align: center;
    background-color: ${(props) => (props.color)};
 

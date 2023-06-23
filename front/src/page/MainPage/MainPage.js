@@ -125,21 +125,21 @@ const MainPage=()=>{
     }
 
 // 할인혜택
-//     const [place2,setPlace2] = useState([]);
-//     console.log(place2)
+    const [place3,setPlace3] = useState([]);
+    // console.log(place3)
 
-//   useEffect(()=>{
-//     const getData = ()=>{
-//         axios({
-//             method:'get',
-//             url:'/인증키/json/DS_MND_ENLSTMN_DCNT_BEF_INF/1/81/'
-//         }).then(res=>(
-//             setPlace2(res.data.DS_MND_ENLSTMN_DCNT_BEF_INF.row.filter(el=>el.rgn==='전국'))
-//         )
-//         )
-//     }
-//     getData();
-//   },[])
+  useEffect(()=>{
+    const getData = ()=>{
+        axios({
+            method:'get',
+            url:`/${process.env.REACT_APP_API_KEY}/json/DS_MND_ENLSTMN_DCNT_BEF_INF/1/81/`
+        }).then(res=>(
+            setPlace3(res.data.DS_MND_ENLSTMN_DCNT_BEF_INF.row.filter(el=>el.rgn==='전국'))
+        )
+        )
+    }
+    getData();
+  },[])
 
 
   //이미지 슬라이스

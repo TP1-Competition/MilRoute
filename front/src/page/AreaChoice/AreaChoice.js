@@ -2,6 +2,11 @@ import * as S from './style';
 import { useEffect, useState } from 'react';
 import {AiOutlineClose} from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import '../../css/alert.css'
+
+const swal = withReactContent(Swal);
 
 const AreaChoice=()=>{
   const navigate= useNavigate();
@@ -35,11 +40,11 @@ const AreaChoice=()=>{
       };
 
       // '시'선택시 버튼 색깔 바꾸기 (아직 완성안됨)
-      // const [color, setColor] = useState('red');
+      const [color, setColor] = useState('');
 
       //시,군 버튼 클릭시
       const onClickRegion=(el)=>{
-        // color==='red' ? setColor('yellow'): setColor('red');
+        color==='' ? setColor('yellow'): setColor('');
         setSiRegion(el)
       }
 
@@ -47,11 +52,13 @@ const AreaChoice=()=>{
       const TabContent = ()=>{
         return(
             <S.RegionBody>
+              <S.RegionContain>
             {menuArr[currentTab].content.map((el,index)=>(
                 <S.Region 
-                // color={color} 
+                color={color} 
                 onClick={()=>onClickRegion(el)} key={index}>{el}</S.Region>
             ))}
+            </S.RegionContain>
             </S.RegionBody>
         )
       }
@@ -66,7 +73,20 @@ const AreaChoice=()=>{
 
  
       const searchBtn=()=>{
-        navigate('/'); //지도 페이지로 바꿔야함
+        swal.fire({  
+          heightAuto: false,
+          icon: 'question',
+          text: `"${doRegion} ${siRegion}"으로 검색하시겠습니까?`,
+          confirmButtonText: '확인',
+          confirmButtonColor: '#289951',
+          showCancelButton: true,
+          cancelButtonText: '취소',
+          width: 400,})
+          .then((result)=>{
+            if(result.isConfirmed){
+             return navigate('/'); //지도 페이지로 바꿔야함
+          }
+        })
       }
 
 
