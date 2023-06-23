@@ -40,11 +40,11 @@ const AreaChoice=()=>{
       };
 
       // '시'선택시 버튼 색깔 바꾸기 (아직 완성안됨)
-      // const [color, setColor] = useState('red');
+      const [color, setColor] = useState('');
 
       //시,군 버튼 클릭시
       const onClickRegion=(el)=>{
-        // color==='red' ? setColor('yellow'): setColor('red');
+        color==='' ? setColor('yellow'): setColor('');
         setSiRegion(el)
       }
 
@@ -52,11 +52,13 @@ const AreaChoice=()=>{
       const TabContent = ()=>{
         return(
             <S.RegionBody>
+              <S.RegionContain>
             {menuArr[currentTab].content.map((el,index)=>(
                 <S.Region 
-                // color={color} 
+                color={color} 
                 onClick={()=>onClickRegion(el)} key={index}>{el}</S.Region>
             ))}
+            </S.RegionContain>
             </S.RegionBody>
         )
       }
