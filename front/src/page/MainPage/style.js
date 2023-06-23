@@ -12,13 +12,23 @@ export const MainWrapper=styled.div`
     width: 90%;
     position: absolute;
     height: 100%;
-`
+`;
+
+export const Header =styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5%;
+`;
+
+
 
 export const BenefitInfo =styled.div`
     display: flex;
     max-width: 100%;
     height: 30%;
     position: relative;
+    /* transition: 0.5s; */
     svg{
         top:50%;
         position: absolute;
@@ -30,13 +40,15 @@ export const BenefitInfo =styled.div`
             right: 0;
         }
     }
-    p{
-        position: absolute;
-        padding: 2%;
-        width: 96%;
-        text-align: center;
-    }
+
 `
+export const BenefitP=styled.div`
+    position: absolute;
+    top:10%;
+    padding: 2%;
+    width: 96%;
+    text-align: center;
+`;
 
 export const MainImg=styled.div`
     min-width: 100%;
@@ -48,6 +60,16 @@ export const MainImg=styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
+
+`;
+
+export const BenefitDiv = styled.div`
+        width: 85%;
+    p{
+        font-size: 13px;
+        margin-bottom: 0;
+        margin-top: 1%;
+    }
 `;
 
 export const H2=styled.h2`
