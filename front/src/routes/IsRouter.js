@@ -5,12 +5,14 @@ import ManageInfo from '../page/MyPage/ManageInfo';
 import SignUp from '../page/SignUp/SignUp';
 import CongratsPage from '../page/SignUp/CongratsPage';
 import SignIn from '../page/SignIn/SignIn';
+import AreaChoice from '../page/AreaChoice/AreaChoice';
 
 const IsRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/' element={<MainPage />} exact={true} />
+        <Route path='/areachoice' element={<AreaChoice />} />
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/manageinfo' element={<ManageInfo />} />
         <Route path='/signup' element={<SignUp />} />
