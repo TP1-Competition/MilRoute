@@ -1,5 +1,6 @@
 package com.tp1.back.member.application;
 
+import com.tp1.back.member.dto.RegisterRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,15 @@ class MemberServiceTest {
     @DisplayName("유효한 이메일와 비밀번호로 회원가입을 할 수 있다.")
     @Test
     void givenValidEmailAndPassword_whenRegister_thenSuccess() {
-        assertThat(memberService.register(AINE_EMAIL, AINE_PASSWORD)).isTrue();
+        assertThat(memberService.register(new RegisterRequest(AINE_EMAIL, AINE_PASSWORD))).isTrue();
     }
 
     @DisplayName("이미 등록된 이메일로 회원가입을 할 수 없다.")
     @Test
     void givenRegisteredEmail_whenRegister_thenFail() {
-        String email = AINE_EMAIL;
-        String password = AINE_PASSWORD;
-        memberService.register(email, password);
+        memberService.register(new RegisterRequest(AINE_EMAIL, AINE_PASSWORD));
 
-        assertThatThrownBy(() -> memberService.register(email, password))
+        assertThatThrownBy(() -> memberService.register(new RegisterRequest(AINE_EMAIL, AINE_PASSWORD)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

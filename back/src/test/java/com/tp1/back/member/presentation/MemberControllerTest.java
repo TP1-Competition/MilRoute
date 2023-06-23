@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static com.tp1.back.common.fixtures.MemberFixtures.AINE_EMAIL;
 import static com.tp1.back.common.fixtures.MemberFixtures.AINE_PASSWORD;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -38,7 +38,7 @@ class MemberControllerTest {
     @Test
     void givenValidRequest_whenRegister_thenSuccess() throws Exception {
         RegisterRequest request = new RegisterRequest(AINE_EMAIL, AINE_PASSWORD);
-        given(memberService.register(anyString(), anyString()))
+        given(memberService.register(any(RegisterRequest.class)))
                 .willReturn(true);
 
         mvc.perform(post("/api/v1/users")
@@ -54,7 +54,7 @@ class MemberControllerTest {
     @Test
     void givenInvalidRequest_whenRegister_thenFailWith400() throws Exception {
         RegisterRequest request = new RegisterRequest(AINE_EMAIL, "1");
-        given(memberService.register(anyString(), anyString()))
+        given(memberService.register(any(RegisterRequest.class)))
                 .willThrow(IllegalArgumentException.class);
 
         mvc.perform(post("/api/v1/users")
