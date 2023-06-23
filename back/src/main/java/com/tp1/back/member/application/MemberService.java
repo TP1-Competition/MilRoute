@@ -2,7 +2,9 @@ package com.tp1.back.member.application;
 
 import com.tp1.back.member.domain.Member;
 import com.tp1.back.member.domain.MemberRepository;
+import com.tp1.back.member.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,15 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public boolean register(final String email, final String password) {
-        memberRepository.findByEmail(email)
+    public boolean register(RegisterRequest request) {
+        memberRepository.findByEmail(request.email())
                 .ifPresent(member -> {
                     throw new IllegalArgumentException("이미 등록된 이메일입니다.");
                 });
 
-        Member member = new Member(email, password);
+        Member member = new Member(request.email(), passwordEncoder.encode(request.email()));
         memberRepository.save(member);
 
         return true;

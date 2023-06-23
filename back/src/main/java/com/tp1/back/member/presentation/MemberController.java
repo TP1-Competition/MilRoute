@@ -2,6 +2,7 @@ package com.tp1.back.member.presentation;
 
 import com.tp1.back.member.application.MemberService;
 import com.tp1.back.member.dto.RegisterRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<Void> register(@RequestBody RegisterRequest request) {
-        memberService.register(request.email(), request.password());
+    public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequest request) {
+        memberService.register(request);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .build();
