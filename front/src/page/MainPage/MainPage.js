@@ -1,8 +1,9 @@
-import { useEffect,useState } from 'react';
+// import { useEffect } from 'react';
+import { useState } from 'react';
 import * as S from './style';
 import {BsFillCaretDownFill} from 'react-icons/bs';
 import {AiFillCaretRight,AiFillCaretLeft} from 'react-icons/ai'
-import axios from 'axios';
+// import axios from 'axios';
 import IuseInterval from '../../hooks/useInterval';
 import { useNavigate } from 'react-router-dom';
 
@@ -125,21 +126,21 @@ const MainPage=()=>{
     }
 
 // 할인혜택
-    const [place3,setPlace3] = useState([]);
-    // console.log(place3)
+//     const [place3,setPlace3] = useState([]);
+//     // console.log(place3)
 
-  useEffect(()=>{
-    const getData = ()=>{
-        axios({
-            method:'get',
-            url:`/${process.env.REACT_APP_API_KEY}/json/DS_MND_ENLSTMN_DCNT_BEF_INF/1/81/`
-        }).then(res=>(
-            setPlace3(res.data.DS_MND_ENLSTMN_DCNT_BEF_INF.row.filter(el=>el.rgn==='전국'))
-        )
-        )
-    }
-    getData();
-  },[])
+//   useEffect(()=>{
+//     const getData = ()=>{
+//         axios({
+//             method:'get',
+//             url:`/${process.env.REACT_APP_API_KEY}/json/DS_MND_ENLSTMN_DCNT_BEF_INF/1/81/`
+//         }).then(res=>(
+//             setPlace3(res.data.DS_MND_ENLSTMN_DCNT_BEF_INF.row.filter(el=>el.rgn==='전국'))
+//         )
+//         )
+//     }
+//     getData();
+//   },[])
 
 
   //이미지 슬라이스
