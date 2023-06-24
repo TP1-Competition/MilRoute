@@ -2,6 +2,8 @@ import * as S from './Layout';
 import FooterBar from './component/FooterBar/FooterBar';
 import IsRouter from './routes/IsRouter';
 import Outlayout from './component/Outlayout/Outlayout';
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
 
 function App() {
   // Don't touch
@@ -16,6 +18,7 @@ window.addEventListener("resize", () => {
 
 
   return (
+    <ThemeProvider theme={theme}>
     <S.AppWrapper>
       <Outlayout/>
       <S.AppContainer>
@@ -23,6 +26,7 @@ window.addEventListener("resize", () => {
       </S.AppContainer>
       <FooterBar/>
     </S.AppWrapper>
+    </ThemeProvider>
   );
 }
 
