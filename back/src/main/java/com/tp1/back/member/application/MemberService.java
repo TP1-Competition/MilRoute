@@ -22,7 +22,7 @@ public class MemberService {
                     throw new IllegalArgumentException("이미 등록된 이메일입니다.");
                 });
 
-        Member member = new Member(request.email(), passwordEncoder.encode(request.email()));
+        Member member = new Member(request.email(), passwordEncoder.encode(request.password()));
         memberRepository.save(member);
 
         return true;
