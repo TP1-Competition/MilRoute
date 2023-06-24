@@ -6,6 +6,7 @@ import SignUp from '../page/SignUp/SignUp';
 import CongratsPage from '../page/SignUp/CongratsPage';
 import SignIn from '../page/SignIn/SignIn';
 import AreaChoice from '../page/AreaChoice/AreaChoice';
+import AgreementPage from '../page/SignUp/Agreement/AgreementPage';
 
 const IsRouter = () => {
   return (
@@ -18,6 +19,7 @@ const IsRouter = () => {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/congratspage' element={<CongratsPage />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/agreementpage' element={<AgreementPage />} />
       </Routes>
     </Router>
   );
