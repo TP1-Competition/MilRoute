@@ -8,6 +8,7 @@ import SignIn from '../page/SignIn/SignIn';
 import AreaChoice from '../page/AreaChoice/AreaChoice';
 import SelectDesti from '../page/SelectDesti/SelectDesti';
 import AgreementPage from '../page/SignUp/Agreement/AgreementPage';
+import DeleteAccount from '../page/DeleteAccount/DeleteAccount';
 
 const IsRouter = () => {
   return (
@@ -22,6 +23,7 @@ const IsRouter = () => {
         <Route path='/signin' element={<SignIn />} />
         <Route path='/selectdesti' element={<SelectDesti />} />
         <Route path='/agreementpage' element={<AgreementPage />} />
+        <Route path='/deleteaccount' element={<DeleteAccount />} />
       </Routes>
     </Router>
   );
