@@ -38,14 +38,9 @@ export const AppContainer = styled.div`
 
 export const FooterBar=styled.div`
   grid-area: footer;
-  background-color: red;
+  background-color: white;
+  height: 50px;
 `;
-
-export const HeaderBar=styled.div`
-  grid-area: header;
-  background-color: red;
-
-`
 
 export const Outlayout = styled.div`
 grid-area: onemain;    

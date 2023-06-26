@@ -1,5 +1,4 @@
 import * as S from './Layout';
-import FooterBar from './component/FooterBar/FooterBar';
 import IsRouter from './routes/IsRouter';
 import Outlayout from './component/Outlayout/Outlayout';
 import { ThemeProvider } from 'styled-components';
@@ -21,10 +20,7 @@ window.addEventListener("resize", () => {
     <ThemeProvider theme={theme}>
     <S.AppWrapper>
       <Outlayout/>
-      <S.AppContainer>
       <IsRouter/>
-      </S.AppContainer>
-      <FooterBar/>
     </S.AppWrapper>
     </ThemeProvider>
   );
