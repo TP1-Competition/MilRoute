@@ -21,14 +21,11 @@ export const Header =styled.div`
     padding-top: 5%;
 `;
 
-
-
 export const BenefitInfo =styled.div`
     display: flex;
     max-width: 100%;
     height: 30%;
     position: relative;
-    /* transition: 0.5s; */
     svg{
         top:50%;
         position: absolute;
