@@ -9,10 +9,13 @@ import AreaChoice from '../page/AreaChoice/AreaChoice';
 import SelectDesti from '../page/SelectDesti/SelectDesti';
 import AgreementPage from '../page/SignUp/Agreement/AgreementPage';
 import DeleteAccount from '../page/DeleteAccount/DeleteAccount';
+import FooterBar from '../component/FooterBar/FooterBar';
+import * as L from '../Layout';
 
 const IsRouter = () => {
   return (
     <Router>
+      <L.AppContainer>
       <Routes>
         <Route path='/' element={<MainPage />} exact={true} />
         <Route path='/areachoice' element={<AreaChoice />} />
@@ -25,6 +28,8 @@ const IsRouter = () => {
         <Route path='/agreementpage' element={<AgreementPage />} />
         <Route path='/deleteaccount' element={<DeleteAccount />} />
       </Routes>
+      </L.AppContainer>
+      <FooterBar/>
     </Router>
   );
 };
