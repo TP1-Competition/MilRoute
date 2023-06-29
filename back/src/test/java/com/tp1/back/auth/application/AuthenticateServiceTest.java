@@ -48,6 +48,6 @@ class AuthenticateServiceTest {
 
         AuthenticateResponse response = authenticateService.authenticate(request);
 
-        assertThat(response.token()).isNotBlank();
+        assertThat(response.accessToken()).isNotBlank();
     }
 }
