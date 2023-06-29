@@ -3,10 +3,7 @@ import IsRouter from './routes/IsRouter';
 import Outlayout from './component/Outlayout/Outlayout';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
-import React, { createContext, useState } from 'react';
-
-// LoginContext 생성
-export const LoginContext = createContext();
+import LoginProvider from './context/LoginContext';
 
 function App() {
   // Don't touch
@@ -19,23 +16,15 @@ function App() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
 
-  // 로그인 여부
-  const [isLoginUser, setIsLoginUser] = useState(false);
-
-  // isLoginUser 상태 변경
-  const handleLoginState = (type) => {
-    setIsLoginUser(type);
-  };
-
   return (
-    <LoginContext.Provider value={{ isLoginUser, handleLoginState }}>
+    <LoginProvider>
       <ThemeProvider theme={theme}>
         <S.AppWrapper>
           <Outlayout />
           <IsRouter />
         </S.AppWrapper>
       </ThemeProvider>
-    </LoginContext.Provider>
+    </LoginProvider>
   );
 }
 
