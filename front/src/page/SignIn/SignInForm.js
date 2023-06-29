@@ -1,6 +1,7 @@
-import { useReducer } from 'react';
-import axios from 'axios';
+import { useReducer, useContext } from 'react';
+import axios from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../../App';
 
 import * as S from './style';
 
@@ -25,6 +26,7 @@ const reducer = (state, action) => {
 
 const SignInForm = () => {
   const navigate = useNavigate();
+  const loginContext = useContext(LoginContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -34,14 +36,18 @@ const SignInForm = () => {
     const { email, password } = state;
 
     try {
-      const response = await axios.post('/api/v1/auth/users/authenticate', {
+      const response = await axios.post('/api/v1/auth/authenticate', {
         email,
         password,
       });
 
       const { data } = response;
+      // 로그인 성공 시 토큰 로컬 스토리지에 저장
       localStorage.setItem('Access-Token', data.accessToken);
-      console.log('Access-Token 저장 완료:', data.accessToken);
+      // 로그인 전역 상태 변경
+      loginContext.handleLoginState(true);
+      // 홈으로 다시 이동
+      navigate('/');
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 403) {
