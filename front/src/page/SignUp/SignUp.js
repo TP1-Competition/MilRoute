@@ -64,11 +64,12 @@ const SignUp = () => {
       const data = { email, password };
 
       axios
-        .post('/api/v1/users', data)
+        .post('/api/v1/users/register', data, {
+          withCredentials: true,
+        })
         .then((response) => {
           // 응답 처리 로직 작성
           console.log(response);
-          // 회원가입이 성공한 경우 축하 페이지로 이동
           navigate('/congratspage');
         })
         .catch((error) => {

@@ -69,35 +69,53 @@ export const SignUpSubmitButton = styled.button`
 `;
 
 /* 회원가입 축하 페이지 */
+
+export const CongratsHeader = styled.div`
+  margin-top: 1%;
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 1.3rem;
+  }
+  svg {
+    position: fixed;
+    margin-left: 2%;
+  }
+`;
+
 export const CongratsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
 `;
 
-export const CongratsCheckIcon = styled.span`
-  font-size: 5rem;
-  margin-bottom: 2rem;
+export const CongratsCheckIcon = styled.img`
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-top: 6rem;
 `;
 
 export const CongratsMessage = styled.p`
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  font-weight: 700;
 `;
 
 export const CongratsButton = styled.button`
   padding: 1rem 2rem;
   font-size: 1rem;
-  background-color: #ececec;
+  background-color: ${({ theme }) => theme.palette.mainyellow};
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #f2f2f2;
-  }
+  color: #fff;
+  font-weight: 700;
+  width: 80%;
+  margin-top: 8rem;
 `;
