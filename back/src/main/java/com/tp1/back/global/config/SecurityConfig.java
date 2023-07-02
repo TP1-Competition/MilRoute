@@ -11,8 +11,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -21,17 +19,6 @@ public class SecurityConfig {
 
     private final AuthenticationProvider authenticationProvider;
     private final AuthenticationFilter jwtAuthenticationFilter;
-
-    @Bean
-    public CorsConfiguration corsConfiguration() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:8080");
-        config.addAllowedMethod("*");
-        config.addAllowedHeader("*");
-        source.registerCorsConfiguration("**", config);
-        return config;
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
