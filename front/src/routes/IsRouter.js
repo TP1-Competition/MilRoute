@@ -13,29 +13,31 @@ import FooterBar from '../component/FooterBar/FooterBar';
 import StartDesti from '../page/StartDesti/StartDesti';
 import LastDesti from '../page/LastDesti/LastDesti';
 import BookMark from '../page/BookMark/BookMark';
+import ShortRoute from '../page/ShortRoute/ShortRoute';
 import * as L from '../Layout';
 
 const IsRouter = () => {
   return (
     <Router>
       <L.AppContainer>
-      <Routes>
-        <Route path='/' element={<MainPage />} exact={true} />
-        <Route path='/areachoice' element={<AreaChoice />} />
-        <Route path='/mypage' element={<MyPage />} />
-        <Route path='/manageinfo' element={<ManageInfo />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/congratspage' element={<CongratsPage />} />
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/selectdesti' element={<SelectDesti />} />
-        <Route path='/agreementpage' element={<AgreementPage />} />
-        <Route path='/deleteaccount' element={<DeleteAccount />} />
-        <Route path='/startdesti' element={<StartDesti />} />
-        <Route path='/lastdesti' element={<LastDesti />} />
-        <Route path='/bookmark' element={<BookMark />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<MainPage />} exact={true} />
+          <Route path='/areachoice' element={<AreaChoice />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/manageinfo' element={<ManageInfo />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/congratspage' element={<CongratsPage />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/selectdesti' element={<SelectDesti />} />
+          <Route path='/agreementpage' element={<AgreementPage />} />
+          <Route path='/deleteaccount' element={<DeleteAccount />} />
+          <Route path='/startdesti' element={<StartDesti />} />
+          <Route path='/lastdesti' element={<LastDesti />} />
+          <Route path='/bookmark' element={<BookMark />} />
+          <Route path='/shortroute' element={<ShortRoute />} />
+        </Routes>
       </L.AppContainer>
-      <FooterBar/>
+      <FooterBar />
     </Router>
   );
 };
