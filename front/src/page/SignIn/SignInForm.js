@@ -36,10 +36,13 @@ const SignInForm = () => {
     const { email, password } = state;
 
     try {
-      const response = await axios.post('/api/v1/auth/authenticate', {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        'http://localhost:8080/api/v1/auth/authenticate',
+        {
+          email,
+          password,
+        }
+      );
 
       const { data } = response;
       // 로그인 성공 시 토큰 로컬 스토리지에 저장
