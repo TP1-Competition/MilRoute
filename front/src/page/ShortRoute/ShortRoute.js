@@ -4,11 +4,12 @@ import { FaBus, FaCar } from 'react-icons/fa';
 import { MdStars } from 'react-icons/md';
 import axios from 'axios';
 import PMap from './Map/KakaoMapPublic';
-import CMap from './Map/KaKaoMapCar';
+// import CMap from './Map/KaKaoMapCar';
 import PublicInfo from './Info/PublicInfo';
-import CarInfo from './Info/CarInfo';
-import carApi from './api/carApi';
-import busApi from './api/busApi';
+// import CarInfo from './Info/CarInfo';
+// import carApi from './api/carApi';
+// import busApi from './api/busApi';
+import { useLocation } from 'react-router-dom';
 
 import * as S from './style';
 import { useNavigate } from 'react-router-dom';
@@ -20,13 +21,16 @@ const ShortRoute = () => {
 
   const navigate = useNavigate();
 
-  // 서버에 데이터 요청하기
+  const location = useLocation();
+
   useEffect(() => {
     const fetchData = async () => {
       // const carResonse = await carApi();
       // setCarData(carResonse);
 
-      const busResponse = await busApi();
+      const response = location.state.data;
+
+      const busResponse = response;
       setBusData(busResponse);
     };
 
@@ -45,17 +49,22 @@ const ShortRoute = () => {
 
   const saveRoute = () => {
     const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('accessToken');
     const routeId = busData.id;
 
-    // /api/v1/users/{userId}/routes/{routeId}
     axios
       .get(
-        `http://localhost:8080/api/v1/users/${userId}/routes/${routeId}/register`
+        `http://localhost:8080/api/v1/users/${userId}/routes/${routeId}/register`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((response) => {
         // 응답 처리 로직 작성
         console.log(response);
-        navigate('/');
+        navigate('/bookmark');
       })
       .catch((error) => {
         console.log(error);

@@ -71,11 +71,14 @@ const PMap = ({ data, active }) => {
       )
       .then((response) => {
         const jsonData = response.data;
-        const graphPosData = jsonData.result.lane[0].section[0].graphPos;
+
+        const allPos = jsonData.result.lane
+          .map((pos) => pos.section[0].graphPos)
+          .flat();
 
         drawMarker(kakao, map);
 
-        let polyline = drawPolyLine(graphPosData, kakao);
+        let polyline = drawPolyLine(allPos, kakao);
 
         polyline.setMap(map);
       })
