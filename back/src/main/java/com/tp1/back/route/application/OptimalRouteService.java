@@ -168,4 +168,10 @@ public class OptimalRouteService {
             paths.remove(distance[cur][i]);
         }
     }
+
+    public boolean removeRoute(Long routeId) {
+        routeRepository.deleteById(routeId);
+
+        return true;
+    }
 }
