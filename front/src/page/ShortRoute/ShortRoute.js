@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 import { FaBus, FaCar } from 'react-icons/fa';
 import { MdStars } from 'react-icons/md';
-
+import axios from 'axios';
 import PMap from './Map/KakaoMapPublic';
 import CMap from './Map/KaKaoMapCar';
 import PublicInfo from './Info/PublicInfo';
@@ -11,11 +11,14 @@ import carApi from './api/carApi';
 import busApi from './api/busApi';
 
 import * as S from './style';
+import { useNavigate } from 'react-router-dom';
 
 const ShortRoute = () => {
   // const [carData, setCarData] = useState(null);
   const [busData, setBusData] = useState(null);
   const [activeRoute, setActiveRoute] = useState(0);
+
+  const navigate = useNavigate();
 
   // 서버에 데이터 요청하기
   useEffect(() => {
@@ -34,10 +37,29 @@ const ShortRoute = () => {
     setActiveRoute(index);
   };
 
-  const [selectedCategory, setSelectedCategory] = useState('car');
+  const [selectedCategory, setSelectedCategory] = useState('public');
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+  };
+
+  const saveRoute = () => {
+    const userId = localStorage.getItem('userId');
+    const routeId = busData.id;
+
+    // /api/v1/users/{userId}/routes/{routeId}
+    axios
+      .get(
+        `http://localhost:8080/api/v1/users/${userId}/routes/${routeId}/register`
+      )
+      .then((response) => {
+        // 응답 처리 로직 작성
+        console.log(response);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -50,7 +72,7 @@ const ShortRoute = () => {
           <h2>최적 경로 표기</h2>
           <button>
             <MdStars size={15} />
-            <span>경로 저장하기</span>
+            <span onClick={saveRoute}>경로 저장하기</span>
           </button>
         </S.Header>
 

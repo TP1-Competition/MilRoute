@@ -1,19 +1,15 @@
 import * as S from './style';
 
-const CustomCheckBox = ({ children, defaultChecked, onClick }) => {
-  const handleInputChange = (event) => {
-    onClick(event.target.checked);
-  };
-
+const CustomCheckBox = ({ children, defaultChecked, onClick, category }) => {
   return (
     <S.TagWrapper>
       <input
         type='checkbox'
-        id='tagInput'
+        id={category}
         checked={defaultChecked}
-        onChange={handleInputChange}
+        onChange={onClick}
       />
-      <S.TagLabel htmlFor='tagInput'>{children}</S.TagLabel>
+      <S.TagLabel htmlFor={category}>{children}</S.TagLabel>
     </S.TagWrapper>
   );
 };

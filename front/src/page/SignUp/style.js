@@ -2,18 +2,11 @@ import styled from 'styled-components';
 
 // 회원가입 페이지
 export const SignUpHeader = styled.div`
+  display: flex;
   padding: 1rem;
-
-  h4 {
-    margin-top: 10%;
-    font-size: 110%;
-  }
 `;
 
 export const GoBackButton = styled.button`
-  position: fixed;
-  left: 10;
-
   background: none;
   border: none;
   cursor: pointer;
@@ -21,8 +14,14 @@ export const GoBackButton = styled.button`
 
 export const H2 = styled.h2`
   font-weight: bold;
-  margin: 0 auto;
   text-align: center;
+  margin-left: 32%;
+`;
+
+export const H4 = styled.h4`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 3%;
 `;
 
 export const SignUpForm = styled.form`
