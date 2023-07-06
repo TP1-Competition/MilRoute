@@ -8,23 +8,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/routes")
 @RequiredArgsConstructor
 @RestController
 public class RouteController {
 
     private final OptimalRouteService routeService;
 
-    @PostMapping("/users/{memberId}/routes")
+    @PostMapping
     public ResponseEntity<OptimalRouteResponse> createOptimalRoute(
-            @PathVariable Long memberId,
             @Valid @RequestBody OptimalRouteRequest request) {
-        var response = routeService.getOptimalRoute(memberId, request);
+        var response = routeService.getOptimalRoute(request);
         return ResponseEntity.ok(response);
     }
 
 
-    @DeleteMapping("/routes/{routeId}")
+    @DeleteMapping("/{routeId}")
     public ResponseEntity<Void> deleteRoute(
             @PathVariable Long routeId
     ) {

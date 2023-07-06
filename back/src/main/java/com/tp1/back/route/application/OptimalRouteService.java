@@ -36,18 +36,13 @@ public class OptimalRouteService {
     private final PlaceService placeService;
 
     @Transactional
-    public OptimalRouteResponse getOptimalRoute(Long memberId, OptimalRouteRequest request) {
+    public OptimalRouteResponse getOptimalRoute(OptimalRouteRequest request) {
 
         // 1. 장소 저장
         List<Place> places = placeService.saveAllPlaces(request.places());
 
-        // 2. 유저 검색
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(IllegalArgumentException::new);
-
         // 3. 경로 생성
         Route route = Route.builder()
-                .member(member)
                 .build();
         Route savedRoute = routeRepository.save(route);
 
