@@ -1,3 +1,6 @@
 spring:
   profiles:
     active: test
+
+odsay:
+  secret-key: ${ODSAY_KEY}
