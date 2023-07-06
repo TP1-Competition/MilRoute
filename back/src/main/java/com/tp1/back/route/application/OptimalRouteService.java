@@ -105,14 +105,14 @@ public class OptimalRouteService {
                 Place endPlace = places.get(j);
 
                 PathDto path = pathService.getPath(startPlace, endPlace);
-                if (path == null) continue;
+
                 PathDto reveredPath = new PathDto(path.subPath(), path.mapObj(), path.payment(), path.endPlace(), path.startPlace());
 
                 distance[i][j] = path;
                 distance[j][i] = reveredPath;
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

@@ -31,9 +31,9 @@ public class ODsayPathProvider implements PathProvider {
     public PathDto calculatePath(Place startPlace, Place endPlace) {
         log.info("s: {}, e: {}", startPlace.getName(), endPlace.getName());
 
-//        var response = requestPath(startPlace, endPlace);
+        var response = requestPath(startPlace, endPlace);
 
-        var response = requestPathV2(startPlace, endPlace);
+//        var response = requestPathV2(startPlace, endPlace);
 
         if (response == null) {
             log.info("ODsay response is null");
@@ -95,6 +95,9 @@ public class ODsayPathProvider implements PathProvider {
                 .queryParam("EY", endPlace.getLatitude())
                 .build(true)
                 .toUri();
+
+        String str = restTemplate.getForObject(uri, String.class);
+        log.info(str);
 
         return restTemplate.getForObject(uri, ODsayResponse.class);
     }
