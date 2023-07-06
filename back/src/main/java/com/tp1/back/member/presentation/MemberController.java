@@ -27,7 +27,7 @@ public class MemberController {
                 .build();
     }
 
-    @GetMapping("/users/{memberId}/routes")
+    @GetMapping("/{memberId}/routes")
     public ResponseEntity<RoutesResponse> readSavedRoutes(
             @PathVariable Long memberId
     ) {
@@ -35,7 +35,7 @@ public class MemberController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/users/{memberId}/routes/{routeId}")
+    @GetMapping("/{memberId}/routes/{routeId}")
     public ResponseEntity<OptimalRouteResponse> readRoute(
             @PathVariable Long memberId,
             @PathVariable Long routeId
