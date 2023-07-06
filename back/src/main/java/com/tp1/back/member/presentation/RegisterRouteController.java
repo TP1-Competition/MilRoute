@@ -15,7 +15,7 @@ public class RegisterRouteController {
 
     private final RegisterRouteService registerRouteService;
 
-    @PostMapping("/users/{memberId}/routes/{routeId}")
+    @GetMapping("/{memberId}/routes/{routeId}/register")
     public ResponseEntity<Void> saveRouteToMember(
             @PathVariable Long memberId,
             @PathVariable Long routeId,
