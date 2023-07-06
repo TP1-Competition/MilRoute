@@ -81,6 +81,7 @@ const AgreementPage = () => {
             handleAgreementChange('all');
           }}
           defaultChecked={agreements.all}
+          category={'all'}
         >
           <S.AgreementTitle>전체 동의</S.AgreementTitle>
         </CustomCheckBox>
@@ -88,6 +89,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('service')}
           defaultChecked={agreements.service}
+          category={'service'}
         >
           <S.AgreementTitle>
             서비스 이용약관<S.RequiredText>(필수)</S.RequiredText>
@@ -98,6 +100,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('privacy')}
           defaultChecked={agreements.privacy}
+          category={'privacy'}
         >
           <S.AgreementTitle>
             개인정보 수집 및 이용 동의<S.RequiredText>(필수)</S.RequiredText>
@@ -108,6 +111,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('thirdParty')}
           defaultChecked={agreements.thirdParty}
+          category={'thirdParty'}
         >
           <S.AgreementTitle>
             개인정보 제 3자 제공 동의<S.RequiredText>(필수)</S.RequiredText>
@@ -118,6 +122,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('age')}
           defaultChecked={agreements.age}
+          category={'age'}
         >
           <S.AgreementTitle>
             만 14세 이상입니다.<S.RequiredText>(필수)</S.RequiredText>
@@ -130,6 +135,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('collect')}
           defaultChecked={agreements.collect}
+          category={'collect'}
         >
           <S.AgreementTitle>
             개인정보 수집 및 이용 동의
@@ -140,6 +146,7 @@ const AgreementPage = () => {
         <CustomCheckBox
           onClick={() => handleAgreementChange('event')}
           defaultChecked={agreements.event}
+          category={'event'}
         >
           <S.AgreementTitle>
             이벤트/마케팅 수신 동의<S.NonRequiredText>(선택)</S.NonRequiredText>
