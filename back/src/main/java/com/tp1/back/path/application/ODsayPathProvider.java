@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -30,10 +31,18 @@ public class ODsayPathProvider implements PathProvider {
     public PathDto calculatePath(Place startPlace, Place endPlace) {
         log.info("s: {}, e: {}", startPlace.getName(), endPlace.getName());
 
-        var response = requestPath(startPlace, endPlace);
+//        var response = requestPath(startPlace, endPlace);
+
+        var response = requestPathV2(startPlace, endPlace);
+
+        if (response == null) {
+            log.info("ODsay response is null");
+        }
 
         try {
-            log.info(new ObjectMapper().writeValueAsString(response));
+            ObjectMapper objectMapper = new ObjectMapper();
+            log.debug(objectMapper.writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(response));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +52,7 @@ public class ODsayPathProvider implements PathProvider {
         ODsayResponse.Path minPath = response.getResult()
                 .getPath()
                 .stream()
-                .min(Comparator.comparingInt(o -> o.getInfo().getTotaldistance()))
+                .min(Comparator.comparingInt(o -> o.getInfo().getTotaltime()))
                 .orElseThrow();
 
         List<SubPathDto> subPaths = minPath.getSubpath()
@@ -51,6 +60,12 @@ public class ODsayPathProvider implements PathProvider {
                 .filter(subPath -> subPath.getTraffictype() != 3)
                 .map(this::mapToSubPathDto)
                 .toList();
+
+        try {
+            log.info(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(subPaths));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
 
         String minMapObj = minPath.getInfo()
                 .getMapobj();
@@ -82,6 +97,32 @@ public class ODsayPathProvider implements PathProvider {
                 .toUri();
 
         return restTemplate.getForObject(uri, ODsayResponse.class);
+    }
+
+    private ODsayResponse requestPathV2(Place startPlace, Place endPlace) {
+        String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
+
+        URI baseUri = UriComponentsBuilder
+                .fromUriString(ODSAY_URI)
+                .queryParam("apiKey", encodedApiKey)
+                .build(true)
+                .toUri();
+
+        URI uri = UriComponentsBuilder
+                .fromUri(baseUri)
+                .queryParam("SX", startPlace.getLongitude())
+                .queryParam("SY", startPlace.getLatitude())
+                .queryParam("EX", endPlace.getLongitude())
+                .queryParam("EY", endPlace.getLatitude())
+                .build(true)
+                .toUri();
+
+        return WebClient.create()
+                .get()
+                .uri(uri)
+                .retrieve()
+                .bodyToMono(ODsayResponse.class)
+                .block();
     }
     private SubPathDto mapToSubPathDto(ODsayResponse.SubPath subPath) {
 

@@ -111,6 +111,11 @@ public class OptimalRouteService {
                 distance[i][j] = path;
                 distance[j][i] = reveredPath;
             }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         return distance;
