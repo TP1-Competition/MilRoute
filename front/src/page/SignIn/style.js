@@ -30,11 +30,14 @@ export const H2 = styled.h2`
 `;
 
 export const SignInImageContainer = styled.div`
-  width: 80%;
-  height: 200px;
   margin-top: 2rem;
 
   text-align: center;
+
+  img {
+    width: 60%;
+    height: 60%;
+  }
 `;
 
 export const SignInImage = styled.img`

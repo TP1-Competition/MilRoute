@@ -19,7 +19,7 @@ const SignIn = () => {
       </S.SignInHeader>
 
       <S.SignInImageContainer>
-        <S.SignInImage src='../Img/hotplace2.jpg'></S.SignInImage>
+        <S.SignInImage src='../Img/Biglogo.png'></S.SignInImage>
         <S.SignInDescription>
           군장병들을 위한 최적의 네비, <span>MilRoute</span>
         </S.SignInDescription>
@@ -31,9 +31,7 @@ const SignIn = () => {
 
       <S.SignInLinksContainer>
         <S.SignInLinkText to='/agreementpage'>회원가입</S.SignInLinkText>
-        <S.SignInLinkText to='/forgot-password'>
-          이메일/비밀번호 찾기
-        </S.SignInLinkText>
+        <S.SignInLinkText>이메일/비밀번호 찾기</S.SignInLinkText>
       </S.SignInLinksContainer>
     </S.SignInContainer>
   );
