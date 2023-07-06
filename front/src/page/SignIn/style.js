@@ -90,7 +90,8 @@ export const SignInButton = styled.button`
 
 export const SignInLinksContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 70%;
 `;
 

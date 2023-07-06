@@ -14,7 +14,7 @@ const SignIn = () => {
   return (
     <S.SignInContainer>
       <S.SignInHeader>
-        <BsArrowLeft onClick={handleGoBack} />
+        <BsArrowLeft onClick={handleGoBack} size={20} />
         <S.H2>로그인</S.H2>
       </S.SignInHeader>
 
@@ -31,7 +31,6 @@ const SignIn = () => {
 
       <S.SignInLinksContainer>
         <S.SignInLinkText to='/agreementpage'>회원가입</S.SignInLinkText>
-        <S.SignInLinkText>이메일/비밀번호 찾기</S.SignInLinkText>
       </S.SignInLinksContainer>
     </S.SignInContainer>
   );

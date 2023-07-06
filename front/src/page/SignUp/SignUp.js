@@ -122,8 +122,8 @@ const SignUp = () => {
           <BsArrowLeft size={20} />
         </S.GoBackButton>
         <S.H2>회원정보 입력</S.H2>
-        <h4>회원정보를 입력해주세요.</h4>
       </S.SignUpHeader>
+      <S.H4>회원정보를 입력해주세요.</S.H4>
       <S.SignUpForm onSubmit={handleSubmit}>
         <InputEmail
           email={state.email}

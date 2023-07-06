@@ -3,12 +3,10 @@ import styled, { css } from 'styled-components';
 export const AgreementPageHeader = styled.div`
   padding: 1rem;
   margin-top: 3%;
+  display: flex;
 `;
 
 export const AgreementBackButton = styled.button`
-  position: fixed;
-  left: 10;
-
   background: none;
   border: none;
   cursor: pointer;
@@ -18,6 +16,7 @@ export const H2 = styled.h2`
   font-weight: bold;
   margin: 0 auto;
   text-align: center;
+  margin-left: 34%;
 `;
 
 export const H4 = styled.h4`
