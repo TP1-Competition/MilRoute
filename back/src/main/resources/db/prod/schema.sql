@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS sub_path
 (
     id            BIGINT AUTO_INCREMENT,
     start_station VARCHAR(255) NOT NULL,
-    end_stations  VARCHAR(255) NOT NULL,
+    end_station   VARCHAR(255) NOT NULL,
     path_id       BIGINT       NOT NULL,
     distance      INTEGER      NOT NULL DEFAULT 0,
     time          INTEGER      NOT NULL DEFAULT 0,
