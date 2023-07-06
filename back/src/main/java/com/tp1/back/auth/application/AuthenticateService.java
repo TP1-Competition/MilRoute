@@ -4,6 +4,7 @@ import com.tp1.back.auth.dto.AuthenticateRequest;
 import com.tp1.back.auth.dto.AuthenticateResponse;
 import com.tp1.back.member.domain.Member;
 import com.tp1.back.member.domain.MemberRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +19,7 @@ public class AuthenticateService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
+    @Transactional
     public AuthenticateResponse authenticate(AuthenticateRequest request) {
         Authentication authentication = new UsernamePasswordAuthenticationToken(request.email(), request.password());
 
@@ -25,6 +27,6 @@ public class AuthenticateService {
         Member member = memberRepository.getByEmail(request.email());
         String jwt = jwtService.generateToken(member);
 
-        return new AuthenticateResponse(jwt);
+        return new AuthenticateResponse(member.getId(), jwt);
     }
 }
