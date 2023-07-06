@@ -13,15 +13,15 @@ import busApi from './api/busApi';
 import * as S from './style';
 
 const ShortRoute = () => {
-  const [carData, setCarData] = useState(null);
+  // const [carData, setCarData] = useState(null);
   const [busData, setBusData] = useState(null);
   const [activeRoute, setActiveRoute] = useState(0);
 
   // 서버에 데이터 요청하기
   useEffect(() => {
     const fetchData = async () => {
-      const carResonse = await carApi();
-      setCarData(carResonse);
+      // const carResonse = await carApi();
+      // setCarData(carResonse);
 
       const busResponse = await busApi();
       setBusData(busResponse);
@@ -55,12 +55,12 @@ const ShortRoute = () => {
         </S.Header>
 
         <S.CategoryWrapper>
-          <button
+          {/* <button
             onClick={() => handleCategoryChange('car')}
             className={selectedCategory === 'car' ? 'active' : ''}
           >
             <FaCar size={17} /> 자동차
-          </button>
+          </button> */}
 
           <button
             onClick={() => handleCategoryChange('public')}
@@ -70,13 +70,14 @@ const ShortRoute = () => {
           </button>
         </S.CategoryWrapper>
         <S.MapWrapper>
-          {selectedCategory === 'car' ? (
-            carData ? (
+          {/* {selectedCategory === 'car' ? ( */}
+          {/* carData ? (
               <CMap data={carData} active={activeRoute} />
             ) : (
               <p>로딩 중...</p>
             )
-          ) : busData ? (
+          ) :  */}
+          {busData ? (
             <PMap data={busData} active={activeRoute} />
           ) : (
             <p>로딩 중...</p>
@@ -84,7 +85,7 @@ const ShortRoute = () => {
         </S.MapWrapper>
       </S.TopWrapper>
       <S.InfoWrapper>
-        {selectedCategory === 'car' ? (
+        {/* {selectedCategory === 'car' ? (
           carData ? (
             <CarInfo
               data={carData}
@@ -94,7 +95,8 @@ const ShortRoute = () => {
           ) : (
             <p>로딩 중...</p>
           )
-        ) : busData ? (
+        ) :  */}
+        {busData ? (
           <PublicInfo
             data={busData}
             active={activeRoute}
