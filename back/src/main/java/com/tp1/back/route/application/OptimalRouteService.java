@@ -110,11 +110,12 @@ public class OptimalRouteService {
 
                 distance[i][j] = path;
                 distance[j][i] = reveredPath;
-            }
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
 
@@ -126,7 +127,7 @@ public class OptimalRouteService {
         TOTAL_TIME = Integer.MAX_VALUE;
 
         for (int i = 1; i < distance.length - 1; i++) {
-            if (distance[0][1] == null) continue;
+            if (distance[0][i] == null) continue;
 
             boolean[] visited = new boolean[distance.length];
             List<PathDto> paths = new ArrayList<>();
