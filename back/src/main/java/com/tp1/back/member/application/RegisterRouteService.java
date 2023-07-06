@@ -25,6 +25,5 @@ public class RegisterRouteService {
                 .orElseThrow(IllegalArgumentException::new);
 
         route.setMember(member);
-        route.setName(request.name());
     }
 }
