@@ -3,6 +3,7 @@ package com.tp1.back.place.domain;
 import com.tp1.back.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,14 +17,14 @@ public class Place extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "external_id")
+    private Long externalId;
+
     @Column(name = "name")
     private String name;
 
     @Column(name = "address")
     private String address;
-
-    @Column(name = "road_address")
-    private String roadAddress;
 
     @Column(name = "latitude")
     private Double latitude;
@@ -31,7 +32,18 @@ public class Place extends BaseEntity {
     @Column(name = "longitude")
     private Double longitude;
 
-    @Column(name = "description")
-    private String description;
-
+    @Builder
+    public Place(
+            Long externalId,
+            String name,
+            String address,
+            Double latitude,
+            Double longitude
+    ) {
+        this.externalId = externalId;
+        this.name = name;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

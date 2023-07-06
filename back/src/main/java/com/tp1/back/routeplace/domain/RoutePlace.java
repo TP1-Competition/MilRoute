@@ -25,4 +25,9 @@ public class RoutePlace extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "place_id")
     private Place place;
+
+    public RoutePlace(Route route, Place place) {
+        this.route = route;
+        this.place = place;
+    }
 }
