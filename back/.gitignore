@@ -4,6 +4,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+src/main/resources/application-prod.yml
+env
+prod.Dockerfile
 
 ### STS ###
 .apt_generated
