@@ -49,7 +49,6 @@ position: fixed;
   width: 350px;
   height: 500px;
   top: 150px;
-  background-color:red;
   @media (max-width: 1230px) {
     left: calc(50vw - 550px);
 

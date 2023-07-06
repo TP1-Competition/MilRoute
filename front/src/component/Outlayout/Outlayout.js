@@ -5,7 +5,7 @@ const Outlayout= ()=>{
     return(
         <>
         <L.Outlayout>
-            Outlayout
+        <img src={'../Img/outline.png'} alt='outline' style={{width:'100%'}} />
         </L.Outlayout>
         </>
     )

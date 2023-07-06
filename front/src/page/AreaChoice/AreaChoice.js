@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css'
+import axios from 'axios';
 
 const swal = withReactContent(Swal);
 
 const AreaChoice=()=>{
   const navigate= useNavigate();
   const menuArr = [
-    { name: '경기', content: ['여주시','양주시','하남시','용인시','평택시','연천군','광주시','동두천시','남양주시','화정시','안산시','양평군','포천시','가평군','성남시','파주시','안성시']},
+    { name: '서울', content: ['서울특별시']},
+    { name: '경기', content: ['가평군','고양시','과천시','광명시','광주시', '구리시','군포시','김포시','남양주시','동두천시','부천시','성남시','수원시','시흥시','안산시','안성시','안양시','양주시','양평군','여주시','연천군','오산시','용인시','의왕시','의정부시','이천시','파주시','평택시','포천시','하남시','화성시']},
     { name: '인천', content: ['강화군','인천광역시']},
-    { name: '강원', content: ['영월군','정선군','화천군','평창군','강릉시','철원군','원주시','홍천군','춘천시','양양군','고성군','횡성군','인제군','양구군']},
+    { name: '강원', content: ['강릉시','동해시','삼척시','속초시', '원주시', '춘천시', '태백시', '고성군', '양구군','양양군', '영월군', '인제군', '정선군', '철원군', '평창군', '홍천군', '화천군', '횡성군']},
     { name: '대전', content: ['대전광역시']},
     { name: '세종', content: ['세종특별시']},
     { name: '충북', content: ['제천시', '음성군', '보은군', '단양군', '충주시', '괴산군', '청주시', '진천군']},
@@ -23,6 +25,7 @@ const AreaChoice=()=>{
     { name: '경남', content: ['거창군', '함양군', '산청군', '합천군', '창녕군', '밀양시', '양산시', '의령군', '함안군', '창원시', '김해시', '하동군', '사천시', '고성군', '거제시', '남해군', '통영시']},
     { name: '전북', content: ['군산시', '익산시', '완주군', '진안군', '무주군', '장수군', '전주시', '김제시', '부안군', '정읍시', '임실군', '남원시', '순창군', '고창군'] },
     { name: '전남', content: ['영광군', '장성군', '담양군', '곡성군', '구례군', '광양시', '순천시', '화순군', '나주시', '함평군', '무안군', '신안군', '여수시', '보성군', '고흥군', '장흥군', '영암군', '강진군', '해안군','진도군', '완도군','목포시']},
+    { name: '부산', content: ['부산광역시']},
     { name: '제주', content: ['제주시', '서귀포시']},
   ];
     const [currentTab, clickTab] = useState(0);
@@ -40,11 +43,11 @@ const AreaChoice=()=>{
       };
 
       // '시'선택시 버튼 색깔 바꾸기 (아직 완성안됨)
-      const [color, setColor] = useState('');
+      const [num,setNum]=useState(-1)
 
       //시,군 버튼 클릭시
-      const onClickRegion=(el)=>{
-        color==='' ? setColor('yellow'): setColor('');
+      const onClickRegion=(el,idx)=>{
+        setNum(idx)
         setSiRegion(el)
       }
 
@@ -53,10 +56,10 @@ const AreaChoice=()=>{
         return(
             <S.RegionBody>
               <S.RegionContain>
-            {menuArr[currentTab].content.map((el,index)=>(
+            {menuArr[currentTab].content.map((el,idx)=>(
                 <S.Region 
-                color={color} 
-                onClick={()=>onClickRegion(el)} key={index}>{el}</S.Region>
+                style={{backgroundColor:(num===idx?'#F9CF00':'')}}
+                onClick={()=>onClickRegion(el,idx)} key={idx}>{el}</S.Region>
             ))}
             </S.RegionContain>
             </S.RegionBody>
@@ -71,7 +74,6 @@ const AreaChoice=()=>{
         }else setRegionStatus(true)
       },[siRegion,doRegion])
 
- 
       const searchBtn=()=>{
         swal.fire({  
           heightAuto: false,
@@ -84,7 +86,24 @@ const AreaChoice=()=>{
           width: 400,})
           .then((result)=>{
             if(result.isConfirmed){
-             return navigate('/selectdesti'); //지도 페이지로 바꿔야함
+              window.localStorage.removeItem('selectPlace');
+              window.localStorage.removeItem('serverData');
+        axios.get('https://dapi.kakao.com/v2/local/search/address',{
+          params: {
+            query: `${doRegion} ${siRegion}`,
+          },
+          headers: {'Authorization' : `KakaoAK ${process.env.REACT_APP_KAKAO_REST_API_KEY}`},
+  }).then(res=>{
+            navigate('/selectdesti',{
+              state:{
+                local : `${doRegion} ${siRegion}`,
+                mapx:res.data.documents[0].x,
+                mapy:res.data.documents[0].y,
+                // localxy2:res.data.items[0]
+              }
+             });
+          })
+           
           }
         })
       }
