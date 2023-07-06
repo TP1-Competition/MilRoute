@@ -22,4 +22,13 @@ public class RouteController {
         var response = routeService.getOptimalRoute(memberId, request);
         return ResponseEntity.ok(response);
     }
+
+
+    @DeleteMapping("/routes/{routeId}")
+    public ResponseEntity<Void> deleteRoute(
+            @PathVariable Long routeId
+    ) {
+        routeService.removeRoute(routeId);
+        return ResponseEntity.ok().build();
+    }
 }

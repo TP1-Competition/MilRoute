@@ -38,4 +38,9 @@ public class Route extends BaseEntity {
     Route(Member member) {
         this.member = member;
     }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
 }

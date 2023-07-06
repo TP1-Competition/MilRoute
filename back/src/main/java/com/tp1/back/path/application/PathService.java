@@ -36,6 +36,7 @@ public class PathService {
                     .startPlace(pathDto.startPlace())
                     .endPlace(pathDto.endPlace())
                     .mapObj(pathDto.mapObj())
+                    .payment(pathDto.payment())
                     .route(route)
                     .build();
             pathRepository.save(path);

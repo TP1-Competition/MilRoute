@@ -37,15 +37,19 @@ public class Path {
     @Column(name = "map_obj")
     private String mapObj;
 
+    @Column(name = "payment")
+    private Integer payment;
+
     @OneToMany(mappedBy = "path")
     private List<SubPath> subPaths = new ArrayList<>();
 
     @Builder
-    private Path(Route route, Place startPlace, Place endPlace, String mapObj, List<SubPath> subPaths) {
+    private Path(Route route, Place startPlace, Place endPlace, String mapObj, Integer payment) {
         this.route = route;
         this.startPlace = startPlace;
         this.endPlace = endPlace;
         this.mapObj = mapObj;
+        this.payment = payment;
     }
 
     public int getTotalTime() {
@@ -58,9 +62,5 @@ public class Path {
         return subPaths.stream()
                 .mapToInt(SubPath::getDistance)
                 .sum();
-    }
-
-    public int getTotalPayment() {
-        return 0;
     }
 }
