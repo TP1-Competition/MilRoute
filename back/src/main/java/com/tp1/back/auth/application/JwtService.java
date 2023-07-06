@@ -18,7 +18,7 @@ import java.util.function.Function;
 @Service
 public final class JwtService {
 
-    private static final int EXPIRATION_TIME_MILLS = 30 * 60 * 1000;
+    private static final int EXPIRATION_TIME_MILLS = 30 * 60 * 1000 * 1000;
     private static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
 
     public String generateToken(Member member) {
