@@ -24,6 +24,9 @@ public class Route extends BaseEntity {
     @Column
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -37,5 +40,13 @@ public class Route extends BaseEntity {
     @Builder
     Route(Member member) {
         this.member = member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
