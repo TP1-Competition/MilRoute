@@ -1,9 +1,10 @@
-import React, { useReducer, useCallback } from 'react';
+import { useReducer, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import InputEmail from './InputEmail';
 import InputPassword from './InputPassword';
 import InputConfirmPassword from './InputConfirmPassword';
+import { BsArrowLeft } from 'react-icons/bs';
 import * as S from './style';
 
 const initialState = {
@@ -39,7 +40,7 @@ const SignUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleGoBack = useCallback(() => {
-    navigate(-1); // 뒤로가기
+    navigate(-1);
   }, [navigate]);
 
   const handleSubmit = useCallback(
@@ -118,9 +119,10 @@ const SignUp = () => {
     <>
       <S.SignUpHeader>
         <S.GoBackButton onClick={handleGoBack}>
-          <S.BackArrowIcon>&larr;</S.BackArrowIcon>
+          <BsArrowLeft size={20} />
         </S.GoBackButton>
-        <S.SignUpTitle>회원정보 입력</S.SignUpTitle>
+        <S.H2>회원정보 입력</S.H2>
+        <h4>회원정보를 입력해주세요.</h4>
       </S.SignUpHeader>
       <S.SignUpForm onSubmit={handleSubmit}>
         <InputEmail
@@ -141,7 +143,7 @@ const SignUp = () => {
           isValid={state.isConfirmPasswordValid}
         />
 
-        <S.SignUpSubmitButton type='submit'>Submit</S.SignUpSubmitButton>
+        <S.SignUpSubmitButton type='submit'>다음</S.SignUpSubmitButton>
       </S.SignUpForm>
     </>
   );

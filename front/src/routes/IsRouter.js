@@ -14,6 +14,7 @@ import StartDesti from '../page/StartDesti/StartDesti';
 import LastDesti from '../page/LastDesti/LastDesti';
 import BookMark from '../page/BookMark/BookMark';
 import ShortRoute from '../page/ShortRoute/ShortRoute';
+import AgreemetTextContainer from '../page/SignUp/Agreement/AgreemetTextContainer';
 import * as L from '../Layout';
 
 const IsRouter = () => {
@@ -35,6 +36,7 @@ const IsRouter = () => {
           <Route path='/lastdesti' element={<LastDesti />} />
           <Route path='/bookmark' element={<BookMark />} />
           <Route path='/shortroute' element={<ShortRoute />} />
+          <Route path='/agreementtext' element={<AgreemetTextContainer />} />
         </Routes>
       </L.AppContainer>
       <FooterBar />

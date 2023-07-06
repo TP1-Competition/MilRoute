@@ -1,30 +1,28 @@
 import styled from 'styled-components';
 
 // 회원가입 페이지
+export const SignUpHeader = styled.div`
+  padding: 1rem;
 
-export const SignUpContainer = styled.div`
-  padding: 20px;
-`;
-export const BackArrowIcon = styled.span`
-  font-size: 1.5rem;
+  h4 {
+    margin-top: 10%;
+    font-size: 110%;
+  }
 `;
 
 export const GoBackButton = styled.button`
+  position: fixed;
+  left: 10;
+
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
 `;
 
-export const SignUpHeader = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-export const SignUpTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-left: 1rem;
+export const H2 = styled.h2`
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
 `;
 
 export const SignUpForm = styled.form`
@@ -34,38 +32,41 @@ export const SignUpForm = styled.form`
 `;
 
 export const SignUpLabel = styled.label`
-  margin-bottom: 5px;
+  margin-top: 5%;
   font-size: 15px;
 `;
 
 export const SignUpInput = styled.input`
-  margin-bottom: 10px;
+  margin-top: 2%;
   padding: 5px;
   border: none;
-  border-bottom: 1px solid black;
+
   outline: none;
   width: 100%;
   box-sizing: border-box;
   height: 40px;
-  border: 1px solid ${({ isvalid }) => (isvalid === 'false' ? 'red' : '#ccc')};
+  border-bottom: 1px solid
+    ${({ isvalid }) => (isvalid === 'false' ? 'red' : '#ccc')};
 `;
 
 export const SignUpValidationError = styled.p`
   color: red;
-  margin-top: 5px;
+  margin-top: 1%;
+  font-size: 50%;
 `;
 
 export const SignUpSubmitButton = styled.button`
-  padding: 0;
-  margin: 10px 20px 10px 0;
-  font-weight: 600;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 5px;
+  background-color: ${({ theme }) => theme.palette.mainyellow};
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 3%;
+  border-radius: 10px;
+  margin-top: 70%;
 
-  &:hover {
-    background: #ff8e00;
-  }
+  font-size: 130%;
+  font-weight: 700;
+  text-align: center;
 `;
 
 /* 회원가입 축하 페이지 */
