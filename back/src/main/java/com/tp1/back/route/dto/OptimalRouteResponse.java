@@ -6,9 +6,10 @@ import java.util.List;
 
 @Builder
 public record OptimalRouteResponse(
-    String start,
-    String end,
-    List<String> wayPoints,
-    List<OptimalPathDto> paths
+        Long id,
+        String start,
+        String end,
+        List<String> wayPoints,
+        List<OptimalPathDto> paths
 ) {
 }

@@ -49,7 +49,7 @@ public class OptimalRouteService {
         Route route = Route.builder()
                 .member(member)
                 .build();
-        routeRepository.save(route);
+        Route savedRoute = routeRepository.save(route);
 
         // 4. 경로 장소 연관 관계 매핑 및 저장
         places.stream()
@@ -89,6 +89,7 @@ public class OptimalRouteService {
                 ).toList();
 
         return OptimalRouteResponse.builder()
+                .id(savedRoute.getId())
                 .start(request.places().get(0).place_name())
                 .end(request.places().get(request.places().size() - 1).place_name())
                 .wayPoints(request.places()
