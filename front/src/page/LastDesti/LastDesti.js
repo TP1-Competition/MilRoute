@@ -3,10 +3,11 @@ import * as S from './style';
 import {BsArrowLeft} from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineSearch,AiOutlineRight} from 'react-icons/ai';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css';
+import { LoginContext } from '../../context/LoginContext';
 
 const swal = withReactContent(Swal);
 
@@ -21,6 +22,7 @@ const LastDesti=()=>{
         setNum(idx)
     }
 
+    const { isLoginUser, handleLoginState } = useContext(LoginContext);
     const finishPlace=()=>{
         if(finish.place_name!==undefined){
             swal.fire({  
@@ -34,16 +36,28 @@ const LastDesti=()=>{
                 width: 400,})
                 .then((result)=>{
                   if(result.isConfirmed){
-                    console.log(serverData,start,finish)
                     window.localStorage.removeItem('selectPlace');
                     window.localStorage.removeItem('serverData');
-                    //경로결과페이지로 가기
-                //    return navigate('/startdesti',{
-                //     state:{
-                //         start:start,
-                //         serverData:serverData,
-                //     }
-                //    }); 
+                    if(!isLoginUser){
+                        swal.fire({
+                            heightAuto: false,
+                            icon: 'warning',
+                            text: '로그인해주세요',
+                            confirmButtonText: '확인',
+                            confirmButtonColor: '#289951',
+                            width: 400,
+                          }).then(res=>{
+                            navigate('/signin')
+                          });
+                    }else{
+                        return navigate('/shortroute',{
+                            state:{
+                                start:start,
+                                finish:finish,
+                                serverData:serverData,
+                            }
+                        }); 
+                    }
                 }
               })
         }else{
