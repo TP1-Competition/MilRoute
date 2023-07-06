@@ -67,15 +67,10 @@ export const MapTag = styled.button`
     height: 1.7rem;
     margin: 0 1% 1% 1%;
     border-radius: 20px;
-    background-color: white;
-    color:${({ theme }) => theme.palette.brightgray};
-    border: 1.5px solid ${({ theme }) => theme.palette.whitegray};
-    &:focus{
-        color:${({ theme }) => theme.palette.black};
-        font-weight: 800;
-        border: 1.5px solid ${({ theme }) => theme.palette.mainyellow};
-        background-color: ${({ theme }) => theme.palette.brightyellow};
-    }
+    /* background-color: white; */
+    /* color:${({ theme }) => theme.palette.brightgray}; *///'#A49E9E'
+    border: 1.5px solid ${({ theme }) => theme.palette.whitegray};//'1.5px solid #DADADA'
+
     &:first-child{
         margin-left:0;
     }
@@ -128,13 +123,16 @@ export const SelectPlace= styled.div`
     border-radius: 30px;
     left: 28%;
     color:${({ theme }) => theme.palette.green};
-    
     p{
         color:${({ theme }) => theme.palette.whitegray} 
     }
     svg{
         padding-left: 4%;
     }
+    @media (max-width: 535px) { 
+        font-size: 12px;
+
+  }
 `;
 
 //군할인
@@ -323,3 +321,4 @@ export const Reset = styled.div`
         margin-right: 2%;
     }
 `;
+

@@ -90,13 +90,12 @@ export const RegionContain = styled.div`
 `;
 
 export const Region = styled.button`
-   border: 1px solid rgb(235, 235, 235);
+   border: none;
    border-radius: 20px;
    margin: 2%;
    width: 46%;
    height: 40px;
    text-align: center;
-   background-color: ${(props) => (props.color)};
 
 `;
 
@@ -113,4 +112,5 @@ export const SearchBtn = styled.button`
     height: 90%;
     margin-top: 4%;
     border-radius: 20px;
+    border: none;
 `;

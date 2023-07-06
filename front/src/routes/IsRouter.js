@@ -10,6 +10,9 @@ import SelectDesti from '../page/SelectDesti/SelectDesti';
 import AgreementPage from '../page/SignUp/Agreement/AgreementPage';
 import DeleteAccount from '../page/DeleteAccount/DeleteAccount';
 import FooterBar from '../component/FooterBar/FooterBar';
+import StartDesti from '../page/StartDesti/StartDesti';
+import LastDesti from '../page/LastDesti/LastDesti';
+import BookMark from '../page/BookMark/BookMark';
 import * as L from '../Layout';
 
 const IsRouter = () => {
@@ -27,6 +30,9 @@ const IsRouter = () => {
         <Route path='/selectdesti' element={<SelectDesti />} />
         <Route path='/agreementpage' element={<AgreementPage />} />
         <Route path='/deleteaccount' element={<DeleteAccount />} />
+        <Route path='/startdesti' element={<StartDesti />} />
+        <Route path='/lastdesti' element={<LastDesti />} />
+        <Route path='/bookmark' element={<BookMark />} />
       </Routes>
       </L.AppContainer>
       <FooterBar/>

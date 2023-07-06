@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   background-image: linear-gradient(0deg, gray,pink);
+  /* background-image: url("../public/Img/outback.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; */
+  background-color: rgb(231, 231, 192)
 }
 
 code {

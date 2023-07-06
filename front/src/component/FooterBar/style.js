@@ -8,7 +8,7 @@ export const divFooter=styled.div`
 `;
 
 export const Icons = styled.div`
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
