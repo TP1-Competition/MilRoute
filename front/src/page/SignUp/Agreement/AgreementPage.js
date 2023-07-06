@@ -105,7 +105,7 @@ const AgreementPage = () => {
           <S.AgreementTitle>
             개인정보 수집 및 이용 동의<S.RequiredText>(필수)</S.RequiredText>
           </S.AgreementTitle>
-          <IoIosArrowDropright />
+          <IoIosArrowDropright onClick={viewAgreements} />
         </CustomCheckBox>
 
         <CustomCheckBox
@@ -116,7 +116,7 @@ const AgreementPage = () => {
           <S.AgreementTitle>
             개인정보 제 3자 제공 동의<S.RequiredText>(필수)</S.RequiredText>
           </S.AgreementTitle>
-          <IoIosArrowDropright />
+          <IoIosArrowDropright onClick={viewAgreements} />
         </CustomCheckBox>
 
         <CustomCheckBox
@@ -127,7 +127,7 @@ const AgreementPage = () => {
           <S.AgreementTitle>
             만 14세 이상입니다.<S.RequiredText>(필수)</S.RequiredText>
           </S.AgreementTitle>
-          <IoIosArrowDropright />
+          <IoIosArrowDropright onClick={viewAgreements} />
         </CustomCheckBox>
         <S.RequiredTextDiv>
           * 미성년자는 서비스 이용이 불가능합니다
@@ -141,7 +141,7 @@ const AgreementPage = () => {
             개인정보 수집 및 이용 동의
             <S.NonRequiredText>(선택)</S.NonRequiredText>
           </S.AgreementTitle>
-          <IoIosArrowDropright />
+          <IoIosArrowDropright onClick={viewAgreements} />
         </CustomCheckBox>
         <CustomCheckBox
           onClick={() => handleAgreementChange('event')}
@@ -151,7 +151,7 @@ const AgreementPage = () => {
           <S.AgreementTitle>
             이벤트/마케팅 수신 동의<S.NonRequiredText>(선택)</S.NonRequiredText>
           </S.AgreementTitle>
-          <IoIosArrowDropright />
+          <IoIosArrowDropright onClick={viewAgreements} />
         </CustomCheckBox>
       </S.AgreementContainer>
 
