@@ -40,7 +40,7 @@ public class Path {
     @Column(name = "payment")
     private Integer payment;
 
-    @OneToMany(mappedBy = "path")
+    @OneToMany(mappedBy = "path", orphanRemoval = true)
     private List<SubPath> subPaths = new ArrayList<>();
 
     @Builder

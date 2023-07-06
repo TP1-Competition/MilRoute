@@ -27,7 +27,7 @@ public class Member extends BaseEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
     private List<Route> routes = new ArrayList<>();
 
     public Member(String email, String password) {

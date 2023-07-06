@@ -28,10 +28,10 @@ public class Route extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", orphanRemoval = true)
     private List<RoutePlace> routePlaces = new ArrayList<>();
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", orphanRemoval = true)
     private List<Path> paths = new ArrayList<>();
 
     @Builder
