@@ -4,7 +4,7 @@ import StationInfo from './StationInfo';
 
 const BusRoute = ({ data, index, active, onClick }) => {
   const time = Math.floor(data.time / 60);
-  const distance = data.distance / 1000;
+  const distance = (data.distance / 1000).toFixed(2);
   const fare = data.fare.toLocaleString();
   const stationPaths = data.subPaths;
 
