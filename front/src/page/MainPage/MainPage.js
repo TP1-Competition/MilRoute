@@ -29,7 +29,7 @@ useEffect(()=>{
                     query: res.data.DATA[i].instltnnm
                 }
             }).then(res=>{
-                setMilHomeImg((el)=>[...el,res.data.items[0]])
+                setMilHomeImg((el)=>[...el,res.data.items[0].thumbnail])
             })
         }
 
@@ -123,20 +123,7 @@ useInterval(
         handleLoginState(false)
     }
 
-        // // useEffect(()=>{
-    //     const lala =()=>{
-    //         // axios.post('http://localhost:8080/api/v1/users/register',{
-    //         //           email :'b1231321@b.com',
-    //         //           password:'qw1234456'
-    //         // }).then(res=>console.log(res))
 
-    //         axios.post('http://localhost:8080/api/v1/auth/authenticate',{
-    //             email:"b1231321@b.com",
-    //             password: "qw1234456"
-    //         }).then(res=>console.log(res))
-    //     }
-
-    // // },[])
 
     return(
             <S.MainPageContainer>

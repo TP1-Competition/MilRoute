@@ -3,11 +3,11 @@ import * as S from './style';
 import {BsArrowLeft} from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineSearch,AiOutlineRight} from 'react-icons/ai';
-import { useState,useContext } from 'react';
+import { useState} from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css';
-import { LoginContext } from '../../context/LoginContext';
+import axios from 'axios';
 
 const swal = withReactContent(Swal);
 
@@ -22,7 +22,6 @@ const LastDesti=()=>{
         setNum(idx)
     }
 
-    const { isLoginUser, handleLoginState } = useContext(LoginContext);
     const finishPlace=()=>{
         if(finish.place_name!==undefined){
             swal.fire({  
@@ -38,26 +37,17 @@ const LastDesti=()=>{
                   if(result.isConfirmed){
                     window.localStorage.removeItem('selectPlace');
                     window.localStorage.removeItem('serverData');
-                    if(!isLoginUser){
-                        swal.fire({
-                            heightAuto: false,
-                            icon: 'warning',
-                            text: '로그인해주세요',
-                            confirmButtonText: '확인',
-                            confirmButtonColor: '#289951',
-                            width: 400,
-                          }).then(res=>{
-                            navigate('/signin')
-                          });
-                    }else{
-                        return navigate('/shortroute',{
-                            state:{
-                                start:start,
-                                finish:finish,
-                                serverData:serverData,
-                            }
-                        }); 
-                    }
+                        axios.post('http://localhost:8080/api/v1/routes',{
+                            startPlace:start,
+                            endPlace:finish,
+                            places:serverData
+                        }).then(res=>
+                            navigate('/shortroute',{
+                                state:{
+                                    data:res.data
+                                }
+                            })
+                            )
                 }
               })
         }else{
