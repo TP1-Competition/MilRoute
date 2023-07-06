@@ -1,7 +1,6 @@
 package com.tp1.back.member.presentation;
 
 import com.tp1.back.member.application.RegisterRouteService;
-import com.tp1.back.member.dto.RegisterRouteRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +17,9 @@ public class RegisterRouteController {
     @GetMapping("/{memberId}/routes/{routeId}/register")
     public ResponseEntity<Void> saveRouteToMember(
             @PathVariable Long memberId,
-            @PathVariable Long routeId,
-            @RequestBody RegisterRouteRequest request
+            @PathVariable Long routeId
     ) {
-        registerRouteService.registerRoute(memberId, routeId, request);
+        registerRouteService.registerRoute(memberId, routeId);
 
         return ResponseEntity.ok().build();
     }
