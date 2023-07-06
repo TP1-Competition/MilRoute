@@ -33,7 +33,7 @@ export const SignInImageContainer = styled.div`
   width: 80%;
   height: 200px;
   margin-top: 2rem;
-  background-color: #ccc;
+
   text-align: center;
 `;
 
@@ -43,8 +43,16 @@ export const SignInImage = styled.img`
 `;
 
 export const SignInDescription = styled.p`
-  margin-bottom: 1rem;
-  margin-top: 0.2rem;
+  margin-bottom: 10%;
+  margin-top: 10%;
+
+  font-size: 110%;
+
+  span {
+    font-size: 120%;
+    font-weight: 700;
+    color: ${({ theme }) => theme.palette.mainyellow};
+  }
 `;
 
 export const SignInForm = styled.form`
@@ -66,7 +74,9 @@ export const SignInInput = styled.input`
 
 export const SignInButton = styled.button`
   padding: 1rem;
-  background-color: #ececec;
+  background-color: ${({ theme }) => theme.palette.mainyellow};
+  color: white;
+  font-size: 110%;
   border: transparent;
   border-radius: 8px;
   cursor: pointer;
