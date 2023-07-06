@@ -26,6 +26,7 @@ const reducer = (state, action) => {
 
 const SignInForm = () => {
   const navigate = useNavigate();
+
   const { isLoginUser, handleLoginState } = useContext(LoginContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -45,8 +46,10 @@ const SignInForm = () => {
       );
 
       const { data } = response;
+
       // 로그인 성공 시 토큰 로컬 스토리지에 저장
-      localStorage.setItem('Access-Token', data.accessToken);
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('userId', data.id);
       // 로그인 시 상태
       handleLoginState(true);
       // 홈으로 다시 이동

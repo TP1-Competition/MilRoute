@@ -1,20 +1,27 @@
-import React from 'react';
+import { BsArrowLeft } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 import SignInForm from './SignInForm';
 import * as S from './style';
 
 const SignIn = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <S.SignInContainer>
       <S.SignInHeader>
-        <S.SignInBackButton>{'<'} Back</S.SignInBackButton>
+        <BsArrowLeft onClick={handleGoBack} />
         <S.H2>로그인</S.H2>
       </S.SignInHeader>
 
       <S.SignInImageContainer>
         <S.SignInImage src='../Img/hotplace2.jpg'></S.SignInImage>
         <S.SignInDescription>
-          군장병들을 위한 최적의 네비, MilRoute
+          군장병들을 위한 최적의 네비, <span>MilRoute</span>
         </S.SignInDescription>
       </S.SignInImageContainer>
 
@@ -23,7 +30,7 @@ const SignIn = () => {
       </S.SignInForm>
 
       <S.SignInLinksContainer>
-        <S.SignInLinkText to='/signup'>회원가입</S.SignInLinkText>
+        <S.SignInLinkText to='/agreementpage'>회원가입</S.SignInLinkText>
         <S.SignInLinkText to='/forgot-password'>
           이메일/비밀번호 찾기
         </S.SignInLinkText>
