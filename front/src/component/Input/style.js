@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const TagWrapper = styled.div`
   display: flex;
 
+  margin-top: 6%;
+
   input[type='checkbox'] {
     appearance: none;
     width: 1.3rem;
@@ -22,6 +24,7 @@ export const TagWrapper = styled.div`
 `;
 
 export const TagLabel = styled.label`
+  width: 100%;
   display: flex;
   align-items: center;
   padding-left: 2%;
