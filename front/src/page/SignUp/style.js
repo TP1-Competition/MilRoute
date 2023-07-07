@@ -76,7 +76,7 @@ export const SignUpInput = styled.input`
   margin-top: 2%;
   padding: 5px;
   border: none;
-  margin-bottom: 6%;
+  margin-bottom: 2%;
 
   outline: none;
   width: 100%;
@@ -88,7 +88,11 @@ export const SignUpInput = styled.input`
 
 export const SignUpValidationError = styled.p`
   color: red;
-  margin-top: 1%;
+  font-size: 50%;
+`;
+
+export const SignUpSameEmailError = styled.p`
+  color: red;
   font-size: 50%;
 `;
 
@@ -96,6 +100,9 @@ export const Footer = styled.div`
   grid-area: footer;
   ${({ theme }) => theme.common.flexCenter};
   height: 100%;
+
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const SignUpSubmitButton = styled.button`

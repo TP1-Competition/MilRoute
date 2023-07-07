@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer, useCallback, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import InputEmail from './InputEmail';
@@ -38,6 +38,7 @@ const reducer = (state, action) => {
 const SignUp = () => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [sameContent, setSameContent] = useState(false);
 
   const handleGoBack = useCallback(() => {
     navigate(-1);
@@ -71,11 +72,14 @@ const SignUp = () => {
         .then((response) => {
           // 회원가입이 성공한 경우 축하 페이지로 이동
           navigate('/congratspage');
+        })
+        .catch((error) => {
+          if (error.response.status === 403 || error.response.status === 400)
+            setSameContent(true);
         });
-      // .catch((error) => {
-      //   console.log(error);
-      // });
     },
+
+    // eslint-disable-next-line
     [state, navigate]
   );
 
@@ -132,6 +136,11 @@ const SignUp = () => {
               onChange={handleEmailChange}
               isValid={state.isEmailValid}
             />
+            {sameContent && (
+              <S.SignUpSameEmailError>
+                이미 가입한 이메일이 있습니다.
+              </S.SignUpSameEmailError>
+            )}
 
             <InputPassword
               password={state.password}
