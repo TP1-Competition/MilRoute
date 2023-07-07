@@ -20,14 +20,21 @@ CREATE TABLE IF NOT EXISTS route
 
 CREATE TABLE IF NOT EXISTS place
 (
-    id          BIGINT AUTO_INCREMENT,
-    external_id BIGINT UNIQUE,
-    name        VARCHAR(255) NOT NULL,
-    address     VARCHAR(255) NOT NULL,
-    latitude    FLOAT        NOT NULL,
-    longitude   FLOAT        NOT NULL,
-    created_at  DATETIME(6)  NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    updated_at  DATETIME(6)  NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    id                  BIGINT AUTO_INCREMENT,
+    external_id         BIGINT UNIQUE,
+    name                VARCHAR(255) NOT NULL,
+    address             VARCHAR(255) NOT NULL,
+    road_address        VARCHAR(255),
+    url                 VARCHAR(255),
+    phone               VARCHAR(255),
+    category_group_code VARCHAR(255),
+    category_group_name VARCHAR(255),
+    category_name       VARCHAR(255),
+    distance            INTEGER,
+    latitude            FLOAT        NOT NULL,
+    longitude           FLOAT        NOT NULL,
+    created_at          DATETIME(6)  NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    updated_at          DATETIME(6)  NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     PRIMARY KEY (id)
 );
 

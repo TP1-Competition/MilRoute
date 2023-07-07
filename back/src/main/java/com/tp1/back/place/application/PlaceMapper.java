@@ -15,6 +15,13 @@ public class PlaceMapper {
                 .address(dto.address())
                 .latitude(dto.latitude())
                 .longitude(dto.longitude())
+                .categoryGroupCode(dto.category_group_code())
+                .categoryGroupName(dto.category_group_name())
+                .categoryName(dto.category_name())
+                .distance(dto.distance())
+                .phone(dto.phone())
+                .url(dto.place_url())
+                .roadAddress(dto.road_address_name())
                 .build();
     }
 
@@ -25,6 +32,13 @@ public class PlaceMapper {
                 .address(dto.address_name())
                 .latitude(dto.y())
                 .longitude(dto.x())
+                .categoryGroupCode(dto.category_group_code())
+                .categoryGroupName(dto.category_group_name())
+                .categoryName(dto.category_name())
+                .distance(dto.distance())
+                .phone(dto.phone())
+                .url(dto.place_url())
+                .roadAddress(dto.road_address_name())
                 .build();
     }
 }

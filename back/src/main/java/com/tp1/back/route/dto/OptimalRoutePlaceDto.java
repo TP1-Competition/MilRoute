@@ -9,6 +9,13 @@ public record OptimalRoutePlaceDto(
         @NotBlank
         String address_name,
         Double x,
-        Double y
+        Double y,
+        String category_group_code,
+        String category_group_name,
+        String category_name,
+        Integer distance,
+        String phone,
+        String place_url,
+        String road_address_name
 ) {
 }

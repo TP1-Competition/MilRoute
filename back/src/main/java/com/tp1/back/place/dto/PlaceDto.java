@@ -11,6 +11,13 @@ public record PlaceDto(
         @NotBlank
         String roadAddress,
         Double latitude,
-        Double longitude
+        Double longitude,
+        String category_group_code,
+        String category_group_name,
+        String category_name,
+        Integer distance,
+        String phone,
+        String place_url,
+        String road_address_name
 ) {
 }
