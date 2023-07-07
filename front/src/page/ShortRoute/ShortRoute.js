@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
-import { FaBus, FaCar } from 'react-icons/fa';
+import { FaBus } from 'react-icons/fa';
+// import { FaCar } from 'react-icons/fa';
+
 import { MdStars } from 'react-icons/md';
 import axios from 'axios';
 import PMap from './Map/KakaoMapPublic';
@@ -40,6 +42,7 @@ const ShortRoute = () => {
     };
 
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   const handleActiveRoute = (index) => {

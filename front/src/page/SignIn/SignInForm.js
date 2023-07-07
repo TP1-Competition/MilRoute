@@ -27,7 +27,7 @@ const reducer = (state, action) => {
 const SignInForm = () => {
   const navigate = useNavigate();
 
-  const { isLoginUser, handleLoginState } = useContext(LoginContext);
+  const { handleLoginState } = useContext(LoginContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -47,12 +47,10 @@ const SignInForm = () => {
 
       const { data } = response;
 
-      // 로그인 성공 시 토큰 로컬 스토리지에 저장
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('userId', data.id);
-      // 로그인 시 상태
       handleLoginState(true);
-      // 홈으로 다시 이동
+
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -62,7 +60,7 @@ const SignInForm = () => {
           payload: '이메일 또는 비밀번호가 잘못되었습니다.',
         });
       } else {
-        navigate('/errorpage'); // 에러 페이지로 이동
+        navigate('/errorpage');
       }
     }
   };

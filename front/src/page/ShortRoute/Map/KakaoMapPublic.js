@@ -30,6 +30,7 @@ const PMap = ({ data, active }) => {
 
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
+      // eslint-disable-next-line
       const marker = new kakao.maps.Marker({
         map: map,
         position: pos.latlng,
@@ -81,10 +82,11 @@ const PMap = ({ data, active }) => {
         let polyline = drawPolyLine(allPos, kakao);
 
         polyline.setMap(map);
-      })
-      .catch((error) => {
-        console.log('데이터를 불러오는 중 오류가 발생했습니다.', error);
       });
+    // .catch((error) => {
+    //   console.log('데이터를 불러오는 중 오류가 발생했습니다.', error);
+    // });
+    // eslint-disable-next-line
   }, [active, data]);
 
   return (

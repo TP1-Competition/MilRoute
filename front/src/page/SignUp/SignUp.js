@@ -73,10 +73,10 @@ const SignUp = () => {
           console.log(response);
           // 회원가입이 성공한 경우 축하 페이지로 이동
           navigate('/congratspage');
-        })
-        .catch((error) => {
-          console.log(error);
         });
+      // .catch((error) => {
+      //   console.log(error);
+      // });
     },
     [state, navigate]
   );
