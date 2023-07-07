@@ -6,7 +6,6 @@ import com.tp1.back.path.domain.SubPath;
 import com.tp1.back.path.domain.SubPathRepository;
 import com.tp1.back.path.dto.PathDto;
 import com.tp1.back.path.dto.SubPathDto;
-import com.tp1.back.place.domain.Place;
 import com.tp1.back.route.domain.Route;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,13 +20,8 @@ public class PathService {
 
     private final PathRepository pathRepository;
     private final SubPathRepository subPathRepository;
-    private final PathProvider pathProvider;
 
     @Transactional
-    public PathDto getPath(Place startPlace, Place endPlace) {
-        return pathProvider.calculatePath(startPlace, endPlace);
-    }
-
     public List<Path> saveAllPaths(List<PathDto> paths, Route route) {
         List<Path> pathList = new ArrayList<>();
 

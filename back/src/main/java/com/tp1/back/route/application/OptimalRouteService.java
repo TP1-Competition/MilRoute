@@ -26,13 +26,11 @@ import java.util.List;
 @Service
 public class OptimalRouteService {
 
-    private static int TOTAL_TIME;
-    private static List<PathDto> PATHS = new ArrayList<>();
-
     private final RouteRepository routeRepository;
     private final RoutePlaceRepository routePlaceRepository;
     private final PathService pathService;
     private final PlaceService placeService;
+    private final OptimalPathsProvider optimalPathsProvider;
 
     @Transactional
     public OptimalRouteResponse getOptimalRoute(OptimalRouteRequest request) {
@@ -50,13 +48,13 @@ public class OptimalRouteService {
                 .map(place -> new RoutePlace(route, place))
                 .forEach(routePlaceRepository::save);
 
-        // 5. 한 장소에서 다른 장소로의 path 구하기
-        PathDto[][] distance = getAllPathDistance(places);
+        // 5. 최적 경로 구하기
+        if (request.startPlace().id().equals(request.endPlace().id())) {
+            places.add(places.get(0));
+        }
+        List<PathDto> optimalPaths = optimalPathsProvider.calculateOptimalPaths(places);
 
-        // 6. 최적 경로 구하기
-        List<PathDto> optimalPaths = getOptimalPaths(distance);
-
-        // 7. 경로, 길, 하위 길 저장
+        // 6. 경로, 길, 하위 길 저장
         pathService.saveAllPaths(optimalPaths, route);
 
         List<OptimalPathDto> pathDto = optimalPaths.stream()
@@ -93,80 +91,6 @@ public class OptimalRouteService {
                         .toList()
                 ).paths(pathDto)
                 .build();
-    }
-
-    private PathDto[][] getAllPathDistance(List<Place> places) {
-        PathDto[][] distance = new PathDto[places.size()][places.size()];
-
-        for (int i = 0; i < places.size(); i++) {
-            for (int j = i + 1; j < places.size(); j++) {
-                Place startPlace = places.get(i);
-                Place endPlace = places.get(j);
-
-                PathDto path = pathService.getPath(startPlace, endPlace);
-
-                PathDto reveredPath = new PathDto(path.subPath(), path.mapObj(), path.payment(), path.endPlace(), path.startPlace());
-
-                distance[i][j] = path;
-                distance[j][i] = reveredPath;
-
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-
-        return distance;
-    }
-
-    private List<PathDto> getOptimalPaths(PathDto[][] distance) {
-
-        TOTAL_TIME = Integer.MAX_VALUE;
-
-        for (int i = 1; i < distance.length - 1; i++) {
-            if (distance[0][i] == null) continue;
-
-            boolean[] visited = new boolean[distance.length];
-            List<PathDto> paths = new ArrayList<>();
-            paths.add(distance[0][i]);
-            visited[0] = true;
-            visited[distance.length - 1] = true;
-            visited[i] = true;
-            backTracking(i, distance[0][i].getTotalTime(), visited, paths, distance);
-        }
-
-        return PATHS;
-    }
-
-    private void backTracking(int cur, int time, boolean[] visited, List<PathDto> paths, PathDto[][] distance) {
-
-        if (time > TOTAL_TIME) return;
-
-        if (paths.size() == distance.length - 2) {
-            PathDto endPath = distance[cur][distance.length - 1];
-            if (endPath == null) return;
-            TOTAL_TIME = time + endPath.getTotalTime();
-            paths.add(endPath);
-            PATHS.clear();
-            PATHS.addAll(paths);
-            return;
-        }
-
-        for (int i = 1; i < distance.length - 1; i++) {
-
-            if (visited[i]) continue;
-            if (distance[cur][i] == null) continue;
-
-            visited[i] = true;
-            paths.add(distance[cur][i]);
-
-            backTracking(i, time + distance[cur][i].getTotalTime(), visited, paths, distance);
-
-            visited[i] = false;
-            paths.remove(distance[cur][i]);
-        }
     }
 
     public boolean removeRoute(Long routeId) {
