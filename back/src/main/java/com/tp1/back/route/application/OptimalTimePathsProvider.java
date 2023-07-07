@@ -30,7 +30,7 @@ public class OptimalTimePathsProvider implements OptimalPathsProvider {
             return calculateOptimalPaths(places.get(0), places.get(places.size() - 1));
         }
 
-        if (places.size() > 5) {
+        if (places.size() > 6) {
             throw new IllegalArgumentException("경유지가 너무 많습니다.");
         }
 
