@@ -45,46 +45,60 @@ const NaverMap=(props)=>{
   }
 
     let iwContent = document.createElement("div")
-    iwContent.style.cssText  ='padding:2%;display:flex;align-items: center;justify-content: center;border-radius:10px; background-color:white; width:150px;height:160px;border-radius:10px; border:1px solid black;' 
+    iwContent.style.cssText  ='padding:1%;display:flex;align-items: center;justify-content: center;border-radius:10px; background-color:white; width:150px;height:190px;border-radius:10px; border:1px solid #A49E9E;' 
 
     let hr = document.createElement("hr")
+    hr.style.cssText='border: 0.5px solid #A49E9E'
 
 
     let iwContent2 = document.createElement("div")
-    iwContent2.style.cssText ='width:95%;position:relative;height:160px;'
+    iwContent2.style.cssText ='width:95%;position:relative;height:180px;'
 
+
+    let wapper = document.createElement("div")
+    wapper.style.cssText =''
 
     let companyName = document.createElement("h3")
     companyName.textContent = `${real[0].place_name}`
     companyName.style.cssText ='margin:0; width:100%;font-size:13px'
+
+    let cate = document.createElement("p")
+    cate.textContent = `${real[0].category_group_name}`
+    cate.style.cssText ='margin:2%;font-size:13px'
 
     let time = document.createElement("p")
     time.textContent = `${real[0].road_address_name||real[0].address_name}`
     time.style.cssText ='margin:2%; width:100%;font-size:13px'
 
     let time2 = document.createElement("p")
-    time2.textContent = `${real[0].phone} ${real[0].phone?'|':''} ${real[0].category_group_name}`
+    time2.textContent = `${real[0].phone}`
     time2.style.cssText ='margin:2%;font-size:13px'
 
     let monthlyWage = document.createElement("a")
     monthlyWage.setAttribute("href", `${real[0].place_url}`);
-    monthlyWage.textContent=`-> 홈페이지 이동`;
+    monthlyWage.textContent=`홈페이지 이동`;
     monthlyWage.style.cssText='font-size:13px;max-width:100px'
 
     let iwContent3 = document.createElement("div")
-    iwContent3.style.cssText ='width:95%;display:flex;align-items: center;justify-content: right;position:absolute;bottom:2px;'
+    iwContent3.style.cssText ='width:95%;display:flex;align-items: center;justify-content: right;position:absolute;bottom:0.5px;'
 
     let btn = document.createElement("button");
     btn.textContent = `장소추가`;
     btn.onclick =  plusPlace;
     btn.style.cssText='width:50%;font-size:11px; border:2px solid #DADADA;margin-top:3%; background-color:white; border-radius:10px; color:#55B586;'
     
+
+    wapper.append(
+      companyName,
+      cate 
+    )
+
     iwContent3.append(
       btn
     )
 
     iwContent2.append(
-      companyName,
+      wapper,
       hr,
       time,
       time2,

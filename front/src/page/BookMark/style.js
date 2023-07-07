@@ -80,12 +80,23 @@ div{
         padding: 3% 0;
         border:0;
         width:30%;
+        height:30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 15px;
         background-color: ${({ theme }) => theme.palette.mainyellow};
         color: white;
         font-weight: 600;
+        font-size: 12px;
         &:last-child{
             background-color: ${({ theme }) => theme.palette.whitegray};
+        }
+        @media (max-width: 535px) { 
+            &:first-child{
+                font-size:11px;
+                width:35%;
+            }
         }
     }
 }

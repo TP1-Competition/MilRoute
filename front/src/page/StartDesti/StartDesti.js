@@ -26,7 +26,7 @@ const StartDesti=()=>{
             swal.fire({  
                 heightAuto: false,
                 icon: 'question',
-                text: `"${start.place_name}"으로 검색하시겠습니까?`,
+                text: `"${start.place_name}"으로 선택하시겠습니까?`,
                 confirmButtonText: '확인',
                 confirmButtonColor: '#289951',
                 showCancelButton: true,

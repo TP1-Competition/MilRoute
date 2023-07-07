@@ -29,7 +29,7 @@ const LastDesti=()=>{
             swal.fire({  
                 heightAuto: false,
                 icon: 'question',
-                text: `"${finish.place_name}"으로 검색하시겠습니까?`,
+                text: `"${finish.place_name}"으로 선택하시겠습니까?`,
                 confirmButtonText: '확인',
                 confirmButtonColor: '#289951',
                 showCancelButton: true,
@@ -39,21 +39,34 @@ const LastDesti=()=>{
                   if(result.isConfirmed){
                     window.localStorage.removeItem('selectPlace');
                     window.localStorage.removeItem('serverData');
+                    let Toast=Swal.mixin({
+                        toast: true,
+                        position: 'center-center',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+                  
+                      Toast.fire({
+                        icon: 'success',
+                        title: '최적경로 계산중'
+                      })
                         axios.post('http://localhost:8080/api/v1/routes',{
                             startPlace:start,
                             endPlace:finish,
                             places:serverData
-                        }).then(res=>
-                            // axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${res.data.id}/register`,{
-                            //     headers:{
-                            //         Authorization : `Bearer ${accessToken}`,
-                            //     }
-                            // })
+                        }).then(res=>{
                             navigate('/shortroute',{
                                 state:{
                                     data:res.data
                                 }
                             })
+                        }
+
                             )
                 }
               })

@@ -62,21 +62,35 @@ const BookMark = ()=>{
     //경로 수정
 
     //삭제
-    const deleteList = async(routeId)=>{
-        await axios.delete(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
-            headers:{
-                Authorization : `Bearer ${accessToken}`,
+    const deleteList = (routeId)=>{
+        swal.fire({  
+            heightAuto: false,
+            icon: 'question',
+            text: `삭제하시겠습니까?`,
+            confirmButtonText: '확인',
+            confirmButtonColor: '#289951',
+            showCancelButton: true,
+            cancelButtonText: '취소',
+            width: 400,})
+            .then(async(result)=>{
+              if(result.isConfirmed){
+                await axios.delete(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
+                    headers:{
+                        Authorization : `Bearer ${accessToken}`,
+                    }
+                }).then(res=>{
+                    axios.get(`http://localhost:8080/api/v1/users/${userId}/routes`,{
+                        headers:{
+                            Authorization : `Bearer ${accessToken}`,
+                        }
+                    }).then(res=>{
+                        setBookList(res.data.routes)
+                        setListName(res.data.routes.map((el)=>el.placeNames.join(` -> `)))
+                    })
+                })
             }
-        }).then(res=>{
-            axios.get(`http://localhost:8080/api/v1/users/${userId}/routes`,{
-                headers:{
-                    Authorization : `Bearer ${accessToken}`,
-                }
-            }).then(res=>{
-                setBookList(res.data.routes)
-                setListName(res.data.routes.map((el)=>el.placeNames.join(` -> `)))
-            })
-        })
+          })
+
     }
 
     return(

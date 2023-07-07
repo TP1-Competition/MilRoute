@@ -2,39 +2,32 @@ import { useEffect,useContext,useState } from 'react';
 import * as S from './style';
 import {BsFillCaretDownFill} from 'react-icons/bs';
 import {AiFillCaretRight,AiFillCaretLeft} from 'react-icons/ai'
-import axios from 'axios';
 import IuseInterval from '../../hooks/useInterval';
 import { useNavigate } from 'react-router-dom';
+import db from '../../db.json';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import '../../css/alert.css'
 
 import { LoginContext } from '../../context/LoginContext';
 
+const swal = withReactContent(Swal);
+
 const MainPage=()=>{
+    const milsale =db.Milsale3;
+    const Milsale2 =db.Milsale2;
+
     const navigate= useNavigate();
     const useInterval=IuseInterval();
 
+
 //군인들 숙박 업소 탭?? 
 const [milHome, setMilHome] = useState([])
-const [milHomeImg, setMilHomeImg] = useState([])
-const [milHomeTitle, setMilHomeTitle] = useState([])
+
 useEffect(()=>{
-    axios.get(`http://localhost:5000/milsale3`).then(res=>{
-        // dcntenatvnm
-        setMilHome(res.data.DATA.filter(el=>el.dcntenatvnm==='연중 객실할인'))
-        for(let i = 0; i<6; i++){
-            axios.get('http://localhost:5000/searchimg',{
-                params:{
-                    query: res.data.DATA[i].instltnnm
-                }
-            }).then(res=>{
-                setMilHomeImg((el)=>[...el,res.data.items[0].thumbnail])
-                setMilHomeTitle(el=>[...el, res.data.items[0].title])
-            })
-        }
+        setMilHome(milsale.filter(el=>el.dcntenatvnm==='연중 객실할인'))
 
-    }
-    )
 },[])
-
 
   //군인들 숙박 업소 탭?? 
     const hotPlace=()=>{
@@ -44,8 +37,7 @@ useEffect(()=>{
                 return(
                     <div key={idx}>
                     <a href={el.hmpg} target="_blank">
-
-                    <img src={milHomeImg[idx]} alt={milHomeTitle[idx]} />
+                    <img src={el.Imgurl} alt={el.Imgurl} />
                     <h4>{el.instltnnm}</h4>
                     <p>{el.rgn}</p>
                     </a>
@@ -59,11 +51,8 @@ useEffect(()=>{
 
 // 할인혜택
     const [place2,setPlace2] = useState([]);
-//이거 건들지 말기
 useEffect(()=>{
-    axios.get(`http://localhost:5000/milsale2`).then(res=>{
-        setPlace2(res.data.DATA.filter(el=>el.rgn==='전국'));
-    })
+        setPlace2(Milsale2.filter(el=>el.rgn==='전국'));
 },[])
 
 
@@ -81,7 +70,7 @@ const nextButton=()=>{
     else setImgCount(0)
 };
 
-//이미지 슬라이스 자동으로 넘기기 //이거 될때마다 리렌더링 됨 
+//이미지 슬라이스 자동으로 넘기기 
 useInterval(
     () => setImgCount((imgCount) =>{
         if(imgCount+1===place2.map(el=>el).length){
@@ -117,9 +106,22 @@ useInterval(
     const { isLoginUser, handleLoginState } = useContext(LoginContext);
 
     const logOut=()=>{
-        window.localStorage.removeItem('userId');
-        window.localStorage.removeItem('accessToken');
-        handleLoginState(false)
+        swal.fire({  
+            heightAuto: false,
+            icon: 'question',
+            text: `로그아웃하실건가요?`,
+            confirmButtonText: '확인',
+            confirmButtonColor: '#289951',
+            showCancelButton: true,
+            cancelButtonText: '취소',
+            width: 400,})
+            .then((result)=>{
+              if(result.isConfirmed){
+                window.localStorage.removeItem('userId');
+                window.localStorage.removeItem('accessToken');
+                handleLoginState(false)
+            }
+          })
     }
 
 
@@ -135,8 +137,7 @@ useInterval(
                 {BenefitInfo()}
                 <S.H2>지역을 선택해주세요</S.H2>
                 <S.SearchDiv onClick={()=>navigate('/areachoice')}><p>지역선택</p><BsFillCaretDownFill/></S.SearchDiv>
-                <h3>사람들이 선택한 핫플레이스</h3>
-                <p>Diam ut quis ultrices mattis aenean</p>
+                <S.H3>사람들이 선택한 핫플레이스</S.H3>
                 {hotPlace()}
                 </S.MainWrapper>
             </S.MainPageContainer>

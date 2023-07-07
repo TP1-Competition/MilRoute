@@ -94,7 +94,7 @@ export const BenefitDiv = styled.div`
         &:nth-child(2){//시작일
             top:43.5%;
             font-size: 75%;
-            left: 7.5%;
+            left: 6.6%;
             color:white;
             font-weight: 600;
 
@@ -234,4 +234,8 @@ export const HotPlaceCompo = styled.div`
         text-decoration-line: none;
         color: black;
     }
+`
+
+export const H3 = styled.h3`
+margin-top: 5%;
 `

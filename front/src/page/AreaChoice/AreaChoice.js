@@ -100,7 +100,6 @@ const AreaChoice=()=>{
                 local : `${doRegion} ${siRegion}`,
                 mapx:res.data.documents[0].x,
                 mapy:res.data.documents[0].y,
-                // localxy2:res.data.items[0]
               }
              });
           })

@@ -11,12 +11,13 @@ import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css'
 import axios from 'axios';
 import { useLocation } from 'react-router';
+import db from '../../db.json';
 
 const swal = withReactContent(Swal);
 const SelectDesti = () =>{
-    // useEffect(()=>{
-    //     window.location.replace('/selectdesti')
-    // },[])
+    const Milplace2= db.Milplace2;
+    const Milsale2=db.Milsale2;
+    const TMOINFO=db.TMOINFO;
     const navigate= useNavigate();
     const selectPlace1=window.localStorage.getItem('selectPlace');
     let serverData1=JSON.parse(window.localStorage.getItem('serverData'));
@@ -311,9 +312,7 @@ const [keyword, setKeyword] = useState([]);
 const [tmoPlace, setTmoPlace] = useState([]);
 
 useEffect(() => {
-  axios.get(`http://localhost:5000/tmo2`).then(res => {
-    setKeyword(res.data.DATA.map(el=>el.tmo_nm));
-  });
+    setKeyword(TMOINFO.map(el=>el.tmo_nm));
 }, []);
 
 useEffect(() => {
@@ -380,15 +379,11 @@ let lodgment = [];
 
 //tag에 따라 milInfo에 담기는 값을 달리해준다. 
 useEffect(()=>{
-   axios.get(`http://localhost:5000/milsale2`).then(res=>{
-    setMilInfo(res.data.DATA)
-   })
+    setMilInfo(Milsale2)
 },[])
 //숙박을 위한 api
 useEffect(()=>{
-    axios.get(`http://localhost:5000/milplace2`).then(res=>{
-        setHotel(res.data.DATA.map(el=>el.addr1))
-    })
+        setHotel(Milplace2.map(el=>el.addr1))
  },[])
  //숙박을 위한 변수
 let hotel2= milInfo.filter(el=>(el.dcntenatvnm.includes('연중 객실할인'))).map(el=>el.rgn==='전국'?`${el.instltnnm}`:`${el.rgn} ${el.instltnnm}`)

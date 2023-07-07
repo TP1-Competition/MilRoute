@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 
 # ENV PATH /user/src/app/node_modules/.bin:$PATH
 
-COPY package.json ./
+COPY . . 
 RUN npm install
 
 # ENV CHOKIDAR_USEPOLLING=true
@@ -11,6 +11,6 @@ RUN npm install
 RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 COPY . .
 
-EXPOSE 3000
+EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["yarn", "dev"]
