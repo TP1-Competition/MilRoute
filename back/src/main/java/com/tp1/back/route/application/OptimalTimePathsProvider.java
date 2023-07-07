@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -71,7 +72,15 @@ public class OptimalTimePathsProvider implements OptimalPathsProvider {
                     }
                 }
 
-                if (path == null) continue;
+                if (path == null) {
+                    path = new PathDto(
+                            Collections.EMPTY_LIST,
+                            "",
+                            0,
+                            start,
+                            end
+                    );
+                }
 
                 PathDto reveredPath = new PathDto(
                         path.subPath(),
