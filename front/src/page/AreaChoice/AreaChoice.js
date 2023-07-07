@@ -37,6 +37,7 @@ const AreaChoice=()=>{
 
     //도 버튼 클릭시
       const selectMenuHandler = (el, index) => {
+        setNum(-1)
         clickTab(index);
         setDoRegion(el.name);
         setSiRegion('');

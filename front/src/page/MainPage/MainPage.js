@@ -26,7 +26,7 @@ const [milHome, setMilHome] = useState([])
 
 useEffect(()=>{
         setMilHome(milsale.filter(el=>el.dcntenatvnm==='연중 객실할인'))
-
+// eslint-disable-next-line
 },[])
 
   //군인들 숙박 업소 탭?? 
@@ -53,6 +53,7 @@ useEffect(()=>{
     const [place2,setPlace2] = useState([]);
 useEffect(()=>{
         setPlace2(Milsale2.filter(el=>el.rgn==='전국'));
+        // eslint-disable-next-line
 },[])
 
 

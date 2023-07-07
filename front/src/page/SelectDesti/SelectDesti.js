@@ -42,6 +42,7 @@ const SelectDesti = () =>{
             setSelectPlace([])
             setServerData([]) 
         }
+        // eslint-disable-next-line
     },[])
     //태그 눌렀을시 넣을 값
     const [tag, setTag]=useState('');
@@ -179,13 +180,16 @@ const [curlength, setCurLength] = useState(0);
 
 
 //검색하기
-const onKeyPress=(e)=>{ // 전국 검색으로 진행
+const onKeyPress=(e)=>{ 
     setNum(-1)
     if(e.key==='Enter'){
     setOnOff('off')
-        let homePlace=[];
-        axios.get(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${address}`,{
-            headers: {
+        let homePlace=[];   //mapx,mapy
+        axios.get(`https://dapi.kakao.com/v2/local/search/keyword.json?y=${mapy}&x=${mapx}&radius=20000`,{
+            params:{
+                query:`${address}`
+            },
+        headers: {
                 Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_REST_API_KEY}`
               }
         }).then(res=>{
@@ -193,7 +197,7 @@ const onKeyPress=(e)=>{ // 전국 검색으로 진행
               if(milFood.length>0) homePlace.push(...milFood.map(el=>el))
               setCurLocal([homePlace])
               setCurLength(homePlace.length)
-              setZoom(7)
+              setZoom(12)
         }
         )
     }
@@ -313,6 +317,7 @@ const [tmoPlace, setTmoPlace] = useState([]);
 
 useEffect(() => {
     setKeyword(TMOINFO.map(el=>el.tmo_nm));
+    // eslint-disable-next-line
 }, []);
 
 useEffect(() => {
@@ -380,10 +385,12 @@ let lodgment = [];
 //tag에 따라 milInfo에 담기는 값을 달리해준다. 
 useEffect(()=>{
     setMilInfo(Milsale2)
+    // eslint-disable-next-line
 },[])
 //숙박을 위한 api
 useEffect(()=>{
         setHotel(Milplace2.map(el=>el.addr1))
+        // eslint-disable-next-line
  },[])
  //숙박을 위한 변수
 let hotel2= milInfo.filter(el=>(el.dcntenatvnm.includes('연중 객실할인'))).map(el=>el.rgn==='전국'?`${el.instltnnm}`:`${el.rgn} ${el.instltnnm}`)
@@ -469,7 +476,7 @@ const milSale = ()=>{
     }
 }
 
-
+const placeholder1= `"${local}" 내에서 검색하기`
 return(
     <>
     <S.Wapper>
@@ -483,7 +490,7 @@ return(
                    value={address}
                     onKeyDown={onKeyPress}
                     onChange ={handleChange} 
-                    placeholder='검색하기' type="text"/>
+                    placeholder={placeholder1} type="text"/>
                 </S.SearchBar>
             </S.HeaderFirst>
             <S.HeaderFirst>

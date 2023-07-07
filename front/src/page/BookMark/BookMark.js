@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router';
 import * as S from './style';
 import {BsArrowLeft} from 'react-icons/bs';
 import {AiOutlineUpCircle,AiOutlineDownCircle} from 'react-icons/ai';
@@ -35,6 +34,7 @@ const BookMark = ()=>{
             setBookList(res.data.routes)
             setListName(res.data.routes.map((el)=>el.placeNames.join(` -> `)))
         })
+        // eslint-disable-next-line
     },[])
 
     const [detailData,setDetailData] = useState([])

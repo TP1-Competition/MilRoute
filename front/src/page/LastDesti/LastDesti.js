@@ -21,8 +21,6 @@ const LastDesti=()=>{
         setFinish(res)
         setNum(idx)
     }
-    let userId= window.localStorage.getItem('userId');
-    let accessToken = window.localStorage.getItem('accessToken');
 
     const finishPlace=()=>{
         if(finish.place_name!==undefined){
