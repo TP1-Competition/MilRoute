@@ -53,7 +53,6 @@ const SignInForm = () => {
 
       navigate('/');
     } catch (error) {
-      console.error(error);
       if (error.response && error.response.status === 403) {
         dispatch({
           type: 'SET_ERROR',

@@ -111,7 +111,7 @@ const CMap = ({ data, active }) => {
           });
         }
       } catch (error) {
-        console.log('오류:', error);
+        // console.log('오류:', error);
       }
     };
 
