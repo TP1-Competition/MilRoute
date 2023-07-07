@@ -90,6 +90,8 @@ const ShortRoute = () => {
       });
   };
 
+  const trueBook = location.state.trueBook;
+
   return (
     <S.ShortRouteContainer>
       <S.TopWrapper>
@@ -98,10 +100,12 @@ const ShortRoute = () => {
             <BsArrowLeft size={20} />
           </S.ArrowWrapper>
           <h2>최적 경로 표기</h2>
-          <button>
-            <MdStars size={15} />
-            <span onClick={saveRoute}>경로 저장하기</span>
-          </button>
+          {trueBook && (
+            <button>
+              <MdStars size={15} />
+              <span onClick={saveRoute}>경로 저장하기</span>
+            </button>
+          )}
         </S.Header>
 
         <S.CategoryWrapper>
