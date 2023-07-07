@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS path
     end_place_id   BIGINT NOT NULL,
     map_obj        VARCHAR(255),
     payment        INTEGER,
+    path_order     INTEGER,
     PRIMARY KEY (id),
     FOREIGN KEY (route_id) REFERENCES route (id),
     FOREIGN KEY (start_place_id) REFERENCES place (id),

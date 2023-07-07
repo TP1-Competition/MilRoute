@@ -40,7 +40,7 @@ public class Path {
     @Column(name = "payment")
     private Integer payment;
 
-    @Column(name = "order")
+    @Column(name = "path_order")
     private Integer order;
 
     @OneToMany(mappedBy = "path", orphanRemoval = true)
