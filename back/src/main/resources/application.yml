@@ -4,3 +4,6 @@ spring:
 
 odsay:
   secret-key: ${ODSAY_KEY}
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}

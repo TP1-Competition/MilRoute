@@ -33,12 +33,6 @@ public class ODsayPathProvider implements PathProvider {
 
         var response = requestPath(startPlace, endPlace);
 
-//        var response = requestPathV2(startPlace, endPlace);
-
-        if (response == null) {
-            log.info("ODsay response is null");
-        }
-
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             log.debug(objectMapper.writerWithDefaultPrettyPrinter()
@@ -96,8 +90,8 @@ public class ODsayPathProvider implements PathProvider {
                 .build(true)
                 .toUri();
 
-        String str = restTemplate.getForObject(uri, String.class);
-        log.info(str);
+//        String str = restTemplate.getForObject(uri, String.class);
+//        log.info(str);
 
         return restTemplate.getForObject(uri, ODsayResponse.class);
     }
