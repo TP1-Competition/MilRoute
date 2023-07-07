@@ -25,12 +25,14 @@ public class PathService {
     public List<Path> saveAllPaths(List<PathDto> paths, Route route) {
         List<Path> pathList = new ArrayList<>();
 
-        for (PathDto pathDto : paths) {
+        for (int i = 0; i < paths.size(); i++) {
+            PathDto pathDto = paths.get(i);
             Path path = Path.builder()
                     .startPlace(pathDto.startPlace())
                     .endPlace(pathDto.endPlace())
                     .mapObj(pathDto.mapObj())
                     .payment(pathDto.payment())
+                    .order(i)
                     .route(route)
                     .build();
             pathRepository.save(path);

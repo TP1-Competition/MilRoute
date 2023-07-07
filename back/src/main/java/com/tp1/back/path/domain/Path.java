@@ -40,16 +40,20 @@ public class Path {
     @Column(name = "payment")
     private Integer payment;
 
+    @Column(name = "order")
+    private Integer order;
+
     @OneToMany(mappedBy = "path", orphanRemoval = true)
     private List<SubPath> subPaths = new ArrayList<>();
 
     @Builder
-    private Path(Route route, Place startPlace, Place endPlace, String mapObj, Integer payment) {
+    private Path(Route route, Place startPlace, Place endPlace, String mapObj, Integer payment, Integer order) {
         this.route = route;
         this.startPlace = startPlace;
         this.endPlace = endPlace;
         this.mapObj = mapObj;
         this.payment = payment;
+        this.order = order;
     }
 
     public int getTotalTime() {

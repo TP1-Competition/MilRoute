@@ -6,7 +6,6 @@ import com.tp1.back.member.dto.RegisterRequest;
 import com.tp1.back.member.dto.RouteDto;
 import com.tp1.back.member.dto.RoutesResponse;
 import com.tp1.back.path.domain.Path;
-import com.tp1.back.path.dto.SubPathDto;
 import com.tp1.back.place.domain.Place;
 import com.tp1.back.route.domain.Route;
 import com.tp1.back.route.dto.OptimalPathDto;
@@ -18,10 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -68,8 +64,13 @@ public class MemberService {
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
 
-        List<String> wayPoint = route.getPaths()
+        List<Path> paths = route.getPaths()
                 .stream()
+                .sorted(Comparator.comparingInt(Path::getOrder))
+                .toList();
+
+        List<String> wayPoint = paths.stream()
+                .sorted(Comparator.comparingInt(Path::getOrder))
                 .map(Path::getRoute)
                 .map(Route::getRoutePlaces)
                 .flatMap(Collection::stream)
@@ -91,15 +92,14 @@ public class MemberService {
                 .start(start)
                 .end(end)
                 .wayPoints(wayPoint)
-                .paths(route.getPaths()
-                        .stream()
-                        .map(this::mapToDto)
+                .paths(paths.stream()
+                        .map(this::mapToOptimalPathDto)
                         .toList()
                 )
                 .build();
     }
 
-    private OptimalPathDto mapToDto(Path path) {
+    private OptimalPathDto mapToOptimalPathDto(Path path) {
         return OptimalPathDto.builder()
                 .startPlaceName(path.getStartPlace()
                         .getName())
