@@ -138,6 +138,7 @@ public class OptimalTimePathsProvider implements OptimalPathsProvider {
         for (int i = 0; i < paths.length; i++) {
             for (int j = 0; j < paths.length; j++) {
                 if ((visited & (1 << j)) != 0) continue;
+                if (paths[cur][j] == null) continue;
                 if (totalTime - paths[cur][j].getTotalTime() == timeCache[j][visited | (1 << j)]) {
                     log.info("path: {} -> {}", cur, j);
                     pathDtos.add(paths[cur][j]);
