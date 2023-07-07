@@ -5,6 +5,7 @@ import {
   TbCircleNumber3,
   TbCircleNumber4,
   TbCircleNumber5,
+  TbCircleNumber6,
 } from 'react-icons/tb';
 
 import * as S from './style';
@@ -15,6 +16,7 @@ const numberIcons = [
   <TbCircleNumber3 size={13} />,
   <TbCircleNumber4 size={13} />,
   <TbCircleNumber5 size={13} />,
+  <TbCircleNumber6 size={13} />,
 ];
 
 const PlaceOrder = ({ data }) => {
