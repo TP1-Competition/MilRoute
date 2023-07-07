@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const PMap = ({ data, active }) => {
   const container = useRef(null);
-
+  
   const activeData = data.paths[active];
   const activeMapObj = activeData.mapObj;
   const startX = activeData.startPlaceX;

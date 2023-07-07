@@ -79,7 +79,7 @@ div{
     button{
         padding: 3% 0;
         border:0;
-        width:30%;
+        width:45%;
         height:30px;
         display: flex;
         align-items: center;

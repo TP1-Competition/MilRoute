@@ -54,7 +54,6 @@ ${({ theme }) => theme.common.flexCenter};
  width: 100%;
  border-radius: 15px;
  cursor: pointer;
- font-weight: 600;
  height: 10%;
 `;
 

@@ -37,25 +37,32 @@ const BookMark = ()=>{
         // eslint-disable-next-line
     },[])
 
-    const [detailData,setDetailData] = useState([])
+    // const [detailData,setDetailData] = useState([])
 
     //드롭다운 눌렀을시 해당 리스트의 데이터 불러오기
-    const listData= async(routeId)=>{
-        await axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
+    // const listData= async(routeId)=>{
+    //     await axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
+    //         headers:{
+    //             Authorization : `Bearer ${accessToken}`,
+    //         }
+    //     }).then(res=>{
+    //         setDetailData(res.data)
+    //     })
+    // }
+
+    //바로 경로 보기
+    const reSendPath= (routeId)=>{
+        axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
             headers:{
                 Authorization : `Bearer ${accessToken}`,
             }
         }).then(res=>{
-            setDetailData(res.data)
-        })
-    }
-
-    //바로 경로 보기
-    const reSendPath= ()=>{
-        navigate('/shortroute',{
-            state:{
-                data:detailData
-            }
+            navigate('/shortroute',{
+                state:{
+                    data:res.data,
+                    trueBook:'trueBook' 
+                }
+            })
         })
     }
 
@@ -112,7 +119,7 @@ const BookMark = ()=>{
                  style={{backgroundColor:(num===idx?'#F9CF00':''),color:(num===idx?'white':'black'),border:(num===idx?'2px solid #F9CF00':'2px solid #DADADA')}}
                 >
                     <p> {listName[idx]}</p>
-                    {num===idx?<AiOutlineDownCircle  size={20}/>:<AiOutlineUpCircle onClick={()=>listData(res.id)} size={20}/>}
+                    {num===idx?<AiOutlineDownCircle  size={20}/>:<AiOutlineUpCircle size={20}/>}
 
                 </S.Data>
                     {num===idx?
@@ -120,8 +127,7 @@ const BookMark = ()=>{
                         <S.Route2>
                         <p>{listName[idx]}</p>
                         <div>
-                            <button onClick={()=>reSendPath()}>바로 경로 보기</button>
-                            <button>경로 수정</button>
+                            <button onClick={()=>reSendPath(res.id)}>바로 경로 보기</button>
                             <button onClick={()=>deleteList(res.id)}>삭제</button>
                         </div>
                         </S.Route2>
