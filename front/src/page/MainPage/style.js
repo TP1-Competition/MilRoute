@@ -216,7 +216,22 @@ export const HotPlaceCompo = styled.div`
     max-width: 100%;
     white-space:nowrap; //공백, 줄바꿈을 하지 않음
 	overflow-x:scroll; 
+    div{
+        max-width: 250px;
+        margin-right: 6%;
+        border: 2px solid #DADADA;
+        border-radius: 16px;
+        padding: 2%;
+    }
+
     img{
-        max-width: 300px;
+        max-width: 200px;
+        height: 150px;
+        border-radius: 15px;
+    }
+
+    a{
+        text-decoration-line: none;
+        color: black;
     }
 `

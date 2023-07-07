@@ -94,6 +94,7 @@ const AreaChoice=()=>{
           },
           headers: {'Authorization' : `KakaoAK ${process.env.REACT_APP_KAKAO_REST_API_KEY}`},
   }).then(res=>{
+    window.location.replace('/selectdesti')
             navigate('/selectdesti',{
               state:{
                 local : `${doRegion} ${siRegion}`,

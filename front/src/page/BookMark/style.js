@@ -51,6 +51,10 @@ padding: 0 2% 0 5%;
  border-radius: 15px;
  cursor: pointer;
  font-weight: 600;
+font-size: 10px;
+p{
+    width: 85%;
+}
 `;
 
 export const Route = styled.div`
@@ -67,6 +71,7 @@ width: 80%;
 p{
     width: 100%;
 text-align: center;
+font-size: 10px;
 }
 div{
     width: 100%;
