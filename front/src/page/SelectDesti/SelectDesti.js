@@ -49,7 +49,7 @@ const SelectDesti = () =>{
     //현위치 주소 표시
     const [current,setCurrent] = useState(local)
     //zoom
-    const [zoom, setZoom] = useState(12)
+    const [zoom, setZoom] = useState(11)
     //관광지, 맛집,tmo, 숙박을 눌렀을시 버튼 색깔 변하게 하는것
     const [num,setNum] = useState(-1)
 
@@ -197,7 +197,7 @@ const onKeyPress=(e)=>{
               if(milFood.length>0) homePlace.push(...milFood.map(el=>el))
               setCurLocal([homePlace])
               setCurLength(homePlace.length)
-              setZoom(12)
+              setZoom(11)
         }
         )
     }
@@ -214,7 +214,7 @@ const hotPlaceClick = async(e)=>{
     setTag('관광지')
     setAddress('')
     setOnOff('off')
-    setZoom(12)
+    setZoom(11)
     axios.get(`https://dapi.kakao.com/v2/local/search/address`,{
         params:{
             query:local
@@ -236,7 +236,7 @@ const hotPlaceClick = async(e)=>{
                 res.data.documents.map(el=> row.push(el));
                 setCurLocal([row])
                 setCurLength(row.length)
-            })
+            }).catch(res=>res)
         }
         
     })
@@ -249,7 +249,7 @@ const hotPlaceClick = async(e)=>{
     setTag('숙박')
     setAddress('')
     setOnOff('off')
-    setZoom(12)
+    setZoom(11)
     row=[];
         axios.get(`https://dapi.kakao.com/v2/local/search/address`,{
             params:{
@@ -272,7 +272,7 @@ const hotPlaceClick = async(e)=>{
                     res.data.documents.map(el=> row.push(el));
                     setCurLocal([row])
                     setCurLength(row.length)
-                })
+                }).catch(res=>res)
             }
         })
     }  ;
@@ -283,7 +283,7 @@ const foodClick = async(e)=>{
     setTag('맛집')
     setAddress('')
     setOnOff('off')
-    setZoom(12)
+    setZoom(11)
     row=[];
         axios.get(`https://dapi.kakao.com/v2/local/search/address`,{
             params:{
@@ -360,7 +360,7 @@ const tmoClick=(e)=>{
     setAddress('')
     setTag('tmo')
     setOnOff('off')
-    setZoom(12)
+    setZoom(11)
     if(tmoPlace2.length!==0){
         setCurLocal([tmoPlace2])
         setCurLength(tmoPlace2.length)

@@ -138,7 +138,7 @@ useInterval(
                 {BenefitInfo()}
                 <S.H2>지역을 선택해주세요</S.H2>
                 <S.SearchDiv onClick={()=>navigate('/areachoice')}><p>지역선택</p><BsFillCaretDownFill/></S.SearchDiv>
-                <S.H3>사람들이 선택한 핫플레이스</S.H3>
+                <S.H3>군인 복지 숙박업소</S.H3>
                 {hotPlace()}
                 </S.MainWrapper>
             </S.MainPageContainer>

@@ -37,18 +37,6 @@ const BookMark = ()=>{
         // eslint-disable-next-line
     },[])
 
-    // const [detailData,setDetailData] = useState([])
-
-    //드롭다운 눌렀을시 해당 리스트의 데이터 불러오기
-    // const listData= async(routeId)=>{
-    //     await axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
-    //         headers:{
-    //             Authorization : `Bearer ${accessToken}`,
-    //         }
-    //     }).then(res=>{
-    //         setDetailData(res.data)
-    //     })
-    // }
 
     //바로 경로 보기
     const reSendPath= (routeId)=>{
@@ -66,7 +54,6 @@ const BookMark = ()=>{
         })
     }
 
-    //경로 수정
 
     //삭제
     const deleteList = (routeId)=>{
