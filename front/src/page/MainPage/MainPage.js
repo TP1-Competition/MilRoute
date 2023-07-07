@@ -11,13 +11,11 @@ import { LoginContext } from '../../context/LoginContext';
 const MainPage=()=>{
     const navigate= useNavigate();
     const useInterval=IuseInterval();
-    //나중에 핫플레이스 데이터 들어갈곳
-
-
 
 //군인들 숙박 업소 탭?? 
 const [milHome, setMilHome] = useState([])
 const [milHomeImg, setMilHomeImg] = useState([])
+const [milHomeTitle, setMilHomeTitle] = useState([])
 useEffect(()=>{
     axios.get(`http://localhost:5000/milsale3`).then(res=>{
         // dcntenatvnm
@@ -25,11 +23,11 @@ useEffect(()=>{
         for(let i = 0; i<6; i++){
             axios.get('http://localhost:5000/searchimg',{
                 params:{
-                    // instltnnm
                     query: res.data.DATA[i].instltnnm
                 }
             }).then(res=>{
                 setMilHomeImg((el)=>[...el,res.data.items[0].thumbnail])
+                setMilHomeTitle(el=>[...el, res.data.items[0].title])
             })
         }
 
@@ -37,8 +35,6 @@ useEffect(()=>{
     )
 },[])
 
-// console.log(milHome)
-// console.log(milHomeImg)
 
   //군인들 숙박 업소 탭?? 
     const hotPlace=()=>{
@@ -47,10 +43,13 @@ useEffect(()=>{
             {milHome.map((el,idx)=>{
                 return(
                     <div key={idx}>
-                    {/* <img src={milHomeImg[idx].thumbnail} alt={milHomeImg[idx].title} /> */}
-                    {/* <p>{milHomeImg[0].title}</p> */}
-                    <h3>{el.instltnnm}</h3>
+                    <a href={el.hmpg} target="_blank">
+
+                    <img src={milHomeImg[idx]} alt={milHomeTitle[idx]} />
+                    <h4>{el.instltnnm}</h4>
                     <p>{el.rgn}</p>
+                    </a>
+
                     </div>
                 )
             })}
@@ -122,6 +121,7 @@ useInterval(
         window.localStorage.removeItem('accessToken');
         handleLoginState(false)
     }
+
 
 
 

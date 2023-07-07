@@ -21,6 +21,8 @@ const LastDesti=()=>{
         setFinish(res)
         setNum(idx)
     }
+    let userId= window.localStorage.getItem('userId');
+    let accessToken = window.localStorage.getItem('accessToken');
 
     const finishPlace=()=>{
         if(finish.place_name!==undefined){
@@ -42,6 +44,11 @@ const LastDesti=()=>{
                             endPlace:finish,
                             places:serverData
                         }).then(res=>
+                            // axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${res.data.id}/register`,{
+                            //     headers:{
+                            //         Authorization : `Bearer ${accessToken}`,
+                            //     }
+                            // })
                             navigate('/shortroute',{
                                 state:{
                                     data:res.data

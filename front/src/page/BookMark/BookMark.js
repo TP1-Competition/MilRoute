@@ -3,21 +3,80 @@ import * as S from './style';
 import {BsArrowLeft} from 'react-icons/bs';
 import {AiOutlineUpCircle,AiOutlineDownCircle} from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css';
+import axios from 'axios';
 
 const swal = withReactContent(Swal);
 
 const BookMark = ()=>{
     const navigate = useNavigate();
-    let lala = [{id:1, route:'루트1'},{id:2, route:'루트2'},{id:3, route:'루트3'},{id:4, route:'루트4'}]
     const [num,setNum] = useState(-1);
+    //저장된 리스트 조회
+    const [bookList, setBookList] =useState([])
+    const [listName, setListName] =useState([])
 
     const startClick=(res,idx)=>{
         // setStart(res)
         setNum(idx)
+    }
+
+    let userId= window.localStorage.getItem('userId');
+    let accessToken = window.localStorage.getItem('accessToken');
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/api/v1/users/${userId}/routes`,{
+            headers:{
+                Authorization : `Bearer ${accessToken}`,
+            }
+        }).then(res=>{
+            setBookList(res.data.routes)
+            setListName(res.data.routes.map((el)=>el.placeNames.join(` -> `)))
+        })
+    },[])
+
+    const [detailData,setDetailData] = useState([])
+
+    //드롭다운 눌렀을시 해당 리스트의 데이터 불러오기
+    const listData= async(routeId)=>{
+        await axios.get(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
+            headers:{
+                Authorization : `Bearer ${accessToken}`,
+            }
+        }).then(res=>{
+            setDetailData(res.data)
+        })
+    }
+
+    //바로 경로 보기
+    const reSendPath= ()=>{
+        navigate('/shortroute',{
+            state:{
+                data:detailData
+            }
+        })
+    }
+
+    //경로 수정
+
+    //삭제
+    const deleteList = async(routeId)=>{
+        await axios.delete(`http://localhost:8080/api/v1/users/${userId}/routes/${routeId}`,{
+            headers:{
+                Authorization : `Bearer ${accessToken}`,
+            }
+        }).then(res=>{
+            axios.get(`http://localhost:8080/api/v1/users/${userId}/routes`,{
+                headers:{
+                    Authorization : `Bearer ${accessToken}`,
+                }
+            }).then(res=>{
+                setBookList(res.data.routes)
+                setListName(res.data.routes.map((el)=>el.placeNames.join(` -> `)))
+            })
+        })
     }
 
     return(
@@ -31,25 +90,25 @@ const BookMark = ()=>{
                 <h2>저장된 최적 경로</h2>
                 
                 
-            {lala.map((res,idx)=>{
+            {bookList.map((res,idx)=>{
             return(
                 <S.InContent key={res.id}>
                 <S.Data 
                  onClick={()=>startClick(res,idx)}
                  style={{backgroundColor:(num===idx?'#F9CF00':''),color:(num===idx?'white':'black'),border:(num===idx?'2px solid #F9CF00':'2px solid #DADADA')}}
                 >
-                    <p> {res.route}</p>
-                    {num===idx?<AiOutlineDownCircle size={20}/>:<AiOutlineUpCircle size={20}/>}
+                    <p> {listName[idx]}</p>
+                    {num===idx?<AiOutlineDownCircle  size={20}/>:<AiOutlineUpCircle onClick={()=>listData(res.id)} size={20}/>}
 
                 </S.Data>
                     {num===idx?
                     <S.Route>
                         <S.Route2>
-                        <p>{res.route}</p>
+                        <p>{listName[idx]}</p>
                         <div>
-                            <button>바로 경로 보기</button>
+                            <button onClick={()=>reSendPath()}>바로 경로 보기</button>
                             <button>경로 수정</button>
-                            <button>삭제</button>
+                            <button onClick={()=>deleteList(res.id)}>삭제</button>
                         </div>
                         </S.Route2>
                     </S.Route>

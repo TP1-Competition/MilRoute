@@ -13,8 +13,10 @@ import axios from 'axios';
 import { useLocation } from 'react-router';
 
 const swal = withReactContent(Swal);
-
 const SelectDesti = () =>{
+    // useEffect(()=>{
+    //     window.location.replace('/selectdesti')
+    // },[])
     const navigate= useNavigate();
     const selectPlace1=window.localStorage.getItem('selectPlace');
     let serverData1=JSON.parse(window.localStorage.getItem('serverData'));

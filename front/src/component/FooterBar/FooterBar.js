@@ -15,9 +15,8 @@ const FooterBar =()=>{
     const { isLoginUser, handleLoginState } = useContext(LoginContext);
 
     const navigateMyPage = () => {
-        navigate('/bookmark');
-    //   if (isLoginUser) navigate('/bookmark');
-    //   else navigate('/signin');
+      if (isLoginUser) navigate('/bookmark');
+      else navigate('/signin');
     };
   
 

@@ -159,7 +159,7 @@ app.get('/milsale3', (req, res) => {
   ,{"rowno":"3","rgn":"강원","instltnnm":"하이원리조트","dcntenatvnm":"연중 객실할인","startday":"2017-06-19","fnshday":"","cntadr":"1588-7789","hmpg":"https://www.welfare.mil.kr","dtlexpln":"프로모션(패키지상품)위주로  운영, 현장결재(최저가보장)"}
   ,{"rowno":"4","rgn":"강원","instltnnm":"용평리조트 객실할인","dcntenatvnm":"연중 객실할인","startday":"2016-07-01","fnshday":"","cntadr":"02-456-2014","hmpg":"https://www.welfare.mil.kr","dtlexpln":"프로모션(패키지상품)위주로  운영, 현장결재(최저가보장),씨엘스포츠 폐쇄몰 이용"}
   ,{"rowno":"5","rgn":"경남","instltnnm":"코오롱호텔(경주)","dcntenatvnm":"연중 객실할인","startday":"2016-07-26","fnshday":"","cntadr":"1600-8668","hmpg":"https://www.welfare.mil.kr","dtlexpln":"30%  50%, 분기별 프로모션 제공으로 할인율 변동 있음"}
-  ,{"rowno":"6","rgn":"경남","instltnnm":"코오롱 씨클라우드호텔(해운대)","dcntenatvnm":"연중 객실할인","startday":"2016-07-26","fnshday":"","cntadr":"051-933-1000","hmpg":"https://www.welfare.mil.kr","dtlexpln":"30%  50%, 분기별 프로모션 제공으로 할인율 변동 있음"}
+  ,{"rowno":"76","rgn":"제주","instltnnm":"제주신화월드","dcntenatvnm":"이용할인","startday":"2023-01-01","fnshday":"2023-12-31","cntadr":"1670-8800","hmpg":"https://www.welfare.mil.kr","dtlexpln":"40%  60%, 조식 할인"}
   ]})
 })
   
