@@ -102,7 +102,7 @@ const LastDesti=()=>{
             {serverData.map((res,idx)=>{
             return(
                 
-                <S.Data key={idx} onClick={()=>startClick(res,idx)} style={{backgroundColor:(num===idx?'black':'#DADADA'),color:(num===idx?'#F9CF00':'black')}}>
+                <S.Data key={idx} onClick={()=>startClick(res,idx)} style={{backgroundColor:(num===idx?'black':'#DADADA'),color:(num===idx?'#F9CF00':'black'),fontWeight:(num===idx?'600':'500')}}>
                     <p>{idx+1}. {res.place_name}</p>
                 </S.Data>
             )

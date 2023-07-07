@@ -201,6 +201,7 @@ export const SearchDiv = styled.div`
  justify-content: center;
  align-items: center;
  border-radius: 20px;
+ cursor: pointer;
  p{
     width: 60%;
     text-align: right;
@@ -222,6 +223,8 @@ export const HotPlaceCompo = styled.div`
         border: 2px solid #DADADA;
         border-radius: 16px;
         padding: 2%;
+    box-shadow: 5px 5px 5px;
+
     }
 
     img{

@@ -4,11 +4,15 @@ export const Wapper = styled.div`
       display: grid;
       width: 100%;
       height: 100%;
-        grid-template-rows: 0.2fr 82% 0.2fr;
+        grid-template-rows: 0.2fr 80% 0.2fr;
+        @media (max-width: 535px) { 
+         grid-template-rows: 0.2fr 77% 0.2fr;
+  }
         grid-template-areas: 
         'header'
         'content'
         'footer'
+
 `;
 
 export const Header=styled.div`
@@ -51,21 +55,24 @@ ${({ theme }) => theme.common.flexCenter};
  width: 100%;
  border-radius: 15px;
  cursor: pointer;
- font-weight: 600;
+ height: 10%;
 `;
 
 export const BtnFooter = styled.div`
 grid-area: footer;
 ${({ theme }) => theme.common.flexCenter};
-height: 20%;
+height: 100%;
 `;
 export const ShortRoute= styled.div`
 ${({ theme }) => theme.common.flexCenter};
     width: 80%;
+    cursor: pointer;
     background-color: ${({ theme }) => theme.palette.mainyellow};
     color: white;
     border-radius: 30px;
+    height: 70%;
     h3{
+      font-size: 17px;
     width: 65%;
     display: flex;
     justify-content: right;
@@ -73,12 +80,17 @@ ${({ theme }) => theme.common.flexCenter};
     svg{
         padding-right: 2%;
     }
+    @media (max-width: 535px) { 
+      width: 80%;
+  }
  }
+
+
 
 `;
 
 export const Svg = styled.div`
-        padding-left: 20%;
+        padding-left: 14%;
     padding-right: 3%;
     display: flex;
     align-items: center;

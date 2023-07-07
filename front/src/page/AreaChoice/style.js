@@ -44,6 +44,7 @@ align-items: center;
 list-style: none;
 overflow-y: scroll;
 height: 100%;
+cursor: pointer;
 margin: 0;
 border: 1px solid rgb(235, 235, 235);
 background-color: rgb(248, 250, 251);

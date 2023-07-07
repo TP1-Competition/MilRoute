@@ -83,6 +83,7 @@ export const MapTag = styled.button`
 export const ShortRoute= styled.div`
     position: absolute;
     bottom: 0;
+    cursor: pointer;
     ${({ theme }) => theme.common.flexCenter};
     width: 80%;
     background-color: ${({ theme }) => theme.palette.mainyellow};
@@ -112,6 +113,7 @@ export const Svg = styled.div`
 //내가 선택한 여행지
 export const SelectPlace= styled.div`
     top:1%;
+    cursor: pointer;
     font-weight: 600;
     width: 53%;
     ${({ theme }) => theme.common.flexCenter};
@@ -311,6 +313,7 @@ export const Reset = styled.div`
     width: 93%;
     height: 7%;
     position: absolute;
+    cursor: pointer;
     margin-top: 3%;
     border-radius: 10px;
     ${({ theme }) => theme.common.flexCenter};

@@ -10,6 +10,7 @@ export const divFooter=styled.div`
 export const Icons = styled.div`
     width: 30%;
     display: flex;
+    cursor: pointer;
     flex-direction: column;
     justify-content: center;
     text-align: center;
