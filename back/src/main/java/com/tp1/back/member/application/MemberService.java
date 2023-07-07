@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,10 +68,16 @@ public class MemberService {
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
 
-        List<String> wayPoint = null;
+        List<String> wayPoint = route.getPaths()
+                .stream()
+                .map(Path::getRoute)
+                .map(Route::getRoutePlaces)
+                .flatMap(Collection::stream)
+                .map(RoutePlace::getPlace)
+                .map(Place::getName)
+                .toList();
 
-        String start = route.getPaths()
-                .get(0)
+        String start = route.getPaths().get(0)
                 .getStartPlace()
                 .getName();
 

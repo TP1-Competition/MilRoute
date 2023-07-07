@@ -29,7 +29,6 @@ public class OptimalRouteService {
     private static int TOTAL_TIME;
     private static List<PathDto> PATHS = new ArrayList<>();
 
-    private final MemberRepository memberRepository;
     private final RouteRepository routeRepository;
     private final RoutePlaceRepository routePlaceRepository;
     private final PathService pathService;
