@@ -14,14 +14,19 @@ export const TopWrapper = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 2%;
 
   h2 {
+    width: 50%;
     font-weight: 700;
     line-height: normal;
     font-size: 120%;
+    margin-left: 15%;
+
+    @media (max-width: 535px) {
+      margin-left: 10%;
+    }
   }
 
   button {
@@ -38,9 +43,15 @@ export const Header = styled.div`
     font-size: 0.8rem;
     width: 30%;
     height: 2rem;
+    /* 
+    margin-left: 20%; */
 
     span {
       margin-left: 2%;
+    }
+
+    @media (max-width: 535px) {
+      width: 40%;
     }
   }
 `;
