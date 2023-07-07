@@ -1,7 +1,5 @@
 package com.tp1.back.route.application;
 
-import com.tp1.back.member.domain.Member;
-import com.tp1.back.member.domain.MemberRepository;
 import com.tp1.back.path.application.PathService;
 import com.tp1.back.path.domain.Path;
 import com.tp1.back.path.dto.PathDto;
@@ -17,8 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -82,16 +78,41 @@ public class OptimalRouteService {
 
         return OptimalRouteResponse.builder()
                 .id(savedRoute.getId())
-                .start(request.places().get(0).place_name())
-                .end(request.places().get(request.places().size() - 1).place_name())
+                .start(request.startPlace().place_name())
+                .end(request.endPlace().place_name())
+                .paths(pathDto)
                 .wayPoints(request.places()
                         .subList(1, request.places().size() - 1)
                         .stream()
                         .map(OptimalRoutePlaceDto::place_name)
                         .toList()
-                ).paths(pathDto)
+                )
                 .build();
     }
+
+    private static OptimalPathDto mapToOptimalPathDto(Path path) {
+        return OptimalPathDto.builder()
+                .startPlaceName(path.getStartPlace().getName())
+                .endPlaceName(path.getEndPlace().getName())
+                .startPlaceX(path.getStartPlace().getLongitude())
+                .startPlaceY(path.getStartPlace().getLatitude())
+                .endPlaceX(path.getEndPlace().getLongitude())
+                .endPlaceY(path.getEndPlace().getLatitude())
+                .mapObj(path.getMapObj())
+                .distance(path.getTotalDistance())
+                .time(path.getTotalTime())
+                .fare(path.getPayment())
+                .subPaths(path.getSubPaths().stream()
+                        .map(subPath -> OptimalSubPathDto.builder()
+                                .pathType(subPath.getPathType())
+                                .startStation(subPath.getStartStation())
+                                .endStation(subPath.getEndStation())
+                                .name(subPath.getName())
+                                .build())
+                        .toList())
+                .build();
+    }
+
 
     public boolean removeRoute(Long routeId) {
         routeRepository.deleteById(routeId);

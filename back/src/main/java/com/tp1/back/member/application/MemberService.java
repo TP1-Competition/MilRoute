@@ -71,12 +71,11 @@ public class MemberService {
 
         List<String> wayPoint = paths.stream()
                 .sorted(Comparator.comparingInt(Path::getOrder))
-                .map(Path::getRoute)
-                .map(Route::getRoutePlaces)
-                .flatMap(Collection::stream)
-                .map(RoutePlace::getPlace)
+                .map(Path::getEndPlace)
                 .map(Place::getName)
                 .toList();
+
+        wayPoint = wayPoint.subList(0, wayPoint.size() - 1);
 
         String start = route.getPaths().get(0)
                 .getStartPlace()
@@ -84,18 +83,18 @@ public class MemberService {
 
         String end = route.getPaths()
                 .get(route.getPaths().size() - 1)
-                .getStartPlace()
+                .getEndPlace()
                 .getName();
 
         return OptimalRouteResponse.builder()
                 .id(routeId)
                 .start(start)
                 .end(end)
-                .wayPoints(wayPoint)
                 .paths(paths.stream()
                         .map(this::mapToOptimalPathDto)
                         .toList()
                 )
+                .wayPoints(wayPoint)
                 .build();
     }
 
