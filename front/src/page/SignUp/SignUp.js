@@ -116,36 +116,43 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <S.SignUpHeader>
         <S.GoBackButton onClick={handleGoBack}>
           <BsArrowLeft size={20} />
         </S.GoBackButton>
         <S.H2>회원정보 입력</S.H2>
       </S.SignUpHeader>
-      <S.H4>회원정보를 입력해주세요.</S.H4>
-      <S.SignUpForm onSubmit={handleSubmit}>
-        <InputEmail
-          email={state.email}
-          onChange={handleEmailChange}
-          isValid={state.isEmailValid}
-        />
 
-        <InputPassword
-          password={state.password}
-          onChange={handlePasswordChange}
-          isValid={state.isPasswordValid}
-        />
+      <S.Body>
+        <S.H4>회원정보를 입력해주세요.</S.H4>
 
-        <InputConfirmPassword
-          confirmPassword={state.confirmPassword}
-          onChange={handleConfirmPasswordChange}
-          isValid={state.isConfirmPasswordValid}
-        />
+        <S.SignUpForm onSubmit={handleSubmit}>
+          <S.InputWrapper>
+            <InputEmail
+              email={state.email}
+              onChange={handleEmailChange}
+              isValid={state.isEmailValid}
+            />
 
-        <S.SignUpSubmitButton type='submit'>다음</S.SignUpSubmitButton>
-      </S.SignUpForm>
-    </>
+            <InputPassword
+              password={state.password}
+              onChange={handlePasswordChange}
+              isValid={state.isPasswordValid}
+            />
+
+            <InputConfirmPassword
+              confirmPassword={state.confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              isValid={state.isConfirmPasswordValid}
+            />
+          </S.InputWrapper>
+          <S.Footer>
+            <S.SignUpSubmitButton type='submit'>다음</S.SignUpSubmitButton>
+          </S.Footer>
+        </S.SignUpForm>
+      </S.Body>
+    </S.Wrapper>
   );
 };
 

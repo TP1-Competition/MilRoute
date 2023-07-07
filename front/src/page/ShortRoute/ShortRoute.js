@@ -11,8 +11,13 @@ import PublicInfo from './Info/PublicInfo';
 // import busApi from './api/busApi';
 import { useLocation } from 'react-router-dom';
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import '../../css/alert.css';
 import * as S from './style';
 import { useNavigate } from 'react-router-dom';
+
+const swal = withReactContent(Swal);
 
 const ShortRoute = () => {
   // const [carData, setCarData] = useState(null);
@@ -24,7 +29,7 @@ const ShortRoute = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       // const carResonse = await carApi();
       // setCarData(carResonse);
 
@@ -52,22 +57,33 @@ const ShortRoute = () => {
     const token = localStorage.getItem('accessToken');
     const routeId = busData.id;
 
-    axios
-      .get(
-        `http://localhost:8080/api/v1/users/${userId}/routes/${routeId}/register`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        // 응답 처리 로직 작성
-        console.log(response);
-        navigate('/bookmark');
+    swal
+      .fire({
+        heightAuto: false,
+        icon: 'question',
+        text: `이 경로를 저장하시겠습니까?`,
+        confirmButtonText: '확인',
+        confirmButtonColor: '#289951',
+        showCancelButton: true,
+        cancelButtonText: '취소',
+        width: 400,
       })
-      .catch((error) => {
-        console.log(error);
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .get(
+              `http://localhost:8080/api/v1/users/${userId}/routes/${routeId}/register`,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            )
+            .then((response) => {
+              // 응답 처리 로직 작성
+              navigate('/bookmark');
+            });
+        }
       });
   };
 
