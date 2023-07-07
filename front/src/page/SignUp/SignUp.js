@@ -84,6 +84,8 @@ const SignUp = () => {
   );
 
   const handleEmailChange = useCallback((e) => {
+    setSameContent(false);
+
     const email = e.target.value;
     dispatch({ type: 'SET_EMAIL', payload: email });
     const isValid = validateEmail(email);
