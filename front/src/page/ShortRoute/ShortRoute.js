@@ -30,6 +30,10 @@ const ShortRoute = () => {
 
   const location = useLocation();
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     const fetchData = () => {
       // const carResonse = await carApi();
@@ -97,7 +101,7 @@ const ShortRoute = () => {
       <S.TopWrapper>
         <S.Header>
           <S.ArrowWrapper>
-            <BsArrowLeft size={20} />
+            <BsArrowLeft size={20} onClick={handleGoBack} />
           </S.ArrowWrapper>
           <h2>최적 경로 표기</h2>
           {!trueBook && (
