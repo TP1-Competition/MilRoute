@@ -50,7 +50,7 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        config.addAllowedOrigin("http://localhost:80");
+        config.addAllowedOrigin("http://milroute.s3-website.us-east-2.amazonaws.com/");
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         config.addAllowedHeader("*");
         config.setAllowCredentials(true);
