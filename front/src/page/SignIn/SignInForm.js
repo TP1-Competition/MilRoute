@@ -37,13 +37,10 @@ const SignInForm = () => {
     const { email, password } = state;
 
     try {
-      const response = await axios.post(
-        'http://localhost:8080/api/v1/auth/authenticate',
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post('/api/v1/auth/authenticate', {
+        email,
+        password,
+      });
 
       const { data } = response;
 

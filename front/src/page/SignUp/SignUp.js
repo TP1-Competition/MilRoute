@@ -66,7 +66,7 @@ const SignUp = () => {
       const data = { email, password };
 
       axios
-        .post('http://localhost:8080/api/v1/users/register', data, {
+        .post('/api/v1/users/register', data, {
           withCredentials: true,
         })
         .then((response) => {
