@@ -10,6 +10,7 @@ import withReactContent from 'sweetalert2-react-content';
 import '../../css/alert.css'
 
 import { LoginContext } from '../../context/LoginContext';
+import axios from 'axios';
 
 const swal = withReactContent(Swal);
 
@@ -26,8 +27,19 @@ const [milHome, setMilHome] = useState([])
 
 useEffect(()=>{
         setMilHome(milsale.filter(el=>el.dcntenatvnm==='연중 객실할인'))
+        axios.get('https://openapi.naver.com/v1/search/image.json',{
+            params:{
+                query: "강남"
+            },
+            headers:{
+                "X-Naver-Client-Id": `${process.env.REACT_APP_API_NAVER_ID_KEY}` ,
+                "X-Naver-Client-Secret": `${process.env.REACT_APP_API_NAVER_SECRET_KEY}`
+            }
+        }).then(res=>console.log(res))
 // eslint-disable-next-line
 },[])
+
+
 
   //군인들 숙박 업소 탭?? 
     const hotPlace=()=>{
