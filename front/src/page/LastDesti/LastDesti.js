@@ -56,7 +56,7 @@ const LastDesti = () => {
               title: '최적경로 계산중',
             });
             axios
-              .post('/api/v1/routes', {
+              .post('http://3.131.9.79:8080/api/v1/routes', {
                 startPlace: start,
                 endPlace: finish,
                 places: serverData,

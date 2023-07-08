@@ -27,7 +27,7 @@ const BookMark = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/v1/users/${userId}/routes`, {
+      .get(`http://3.131.9.79:8080/api/v1/users/${userId}/routes`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -42,7 +42,7 @@ const BookMark = () => {
   //바로 경로 보기
   const reSendPath = (routeId) => {
     axios
-      .get(`/api/v1/users/${userId}/routes/${routeId}`, {
+      .get(`http://3.131.9.79:8080/api/v1/users/${userId}/routes/${routeId}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -73,14 +73,17 @@ const BookMark = () => {
       .then(async (result) => {
         if (result.isConfirmed) {
           await axios
-            .delete(`/api/v1/users/${userId}/routes/${routeId}`, {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            })
+            .delete(
+              `http://3.131.9.79:8080/api/v1/users/${userId}/routes/${routeId}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
+              }
+            )
             .then((res) => {
               axios
-                .get(`/api/v1/users/${userId}/routes`, {
+                .get(`http://3.131.9.79:8080/api/v1/users/${userId}/routes`, {
                   headers: {
                     Authorization: `Bearer ${accessToken}`,
                   },

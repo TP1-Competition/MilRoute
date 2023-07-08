@@ -66,7 +66,7 @@ const SignUp = () => {
       const data = { email, password };
 
       axios
-        .post('/api/v1/users/register', data, {
+        .post('http://3.131.9.79:8080/api/v1/users/register', data, {
           withCredentials: true,
         })
         .then((response) => {

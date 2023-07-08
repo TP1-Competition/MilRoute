@@ -74,11 +74,14 @@ const ShortRoute = () => {
       .then((result) => {
         if (result.isConfirmed) {
           axios
-            .get(`/api/v1/users/${userId}/routes/${routeId}/register`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            })
+            .get(
+              `http://3.131.9.79:8080/api/v1/users/${userId}/routes/${routeId}/register`,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            )
             .then((response) => {
               // 응답 처리 로직 작성
               navigate('/bookmark');
