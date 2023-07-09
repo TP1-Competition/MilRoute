@@ -26,7 +26,9 @@ const PublicInfo = ({ data, onClick, active }) => {
           />
         ))}
       </div>
-      <div>powered by www.ODsay.com</div>
+      <S.Odsay>
+        <p>powered by www.ODsay.com</p>
+      </S.Odsay>
     </S.RouteInfoWrppaer>
   );
 };

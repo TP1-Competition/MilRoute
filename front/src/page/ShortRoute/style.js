@@ -108,8 +108,6 @@ export const InfoWrapper = styled.div`
 // --------------------------------
 // CarInfo
 export const RouteSeparator = styled.div`
-  position: relative;
-
   border-top: 1px solid ${({ theme }) => theme.palette.whitegray};
 `;
 // PublicInfo
@@ -117,4 +115,17 @@ export const RouteSeparator = styled.div`
 
 export const RouteInfoWrppaer = styled.span`
   border-bottom: 1px solid ${({ theme }) => theme.palette.whitegray};
+`;
+
+export const Odsay = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  width: 100%;
+
+  p {
+    width: 50%;
+    font-size: 10px;
+  }
 `;
