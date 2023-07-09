@@ -124,7 +124,7 @@ const LastDesti = () => {
         <S.ShortRoute onClick={finishPlace}>
           <h3>
             <AiOutlineSearch size={20} />
-            경로 검색하기
+            도착 장소 선정하기
           </h3>
           <S.Svg>
             <AiOutlineRight size={20} />
