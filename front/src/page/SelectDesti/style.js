@@ -118,7 +118,7 @@ export const SelectPlace= styled.div`
     width: 53%;
     ${({ theme }) => theme.common.flexCenter};
     position: absolute;
-    border:2px solid ${({ theme }) => theme.palette.green};
+    
     background-color: white;
     z-index: 2;
     height: 6%;

@@ -38,6 +38,9 @@ const NaverMap=(props)=>{
     
 
     function plusPlace() {
+      //색깔 변하기 
+      props.setSecondNum(true);
+      setTimeout(()=>props.setSecondNum(false),2000)
       props.setSelectPlace(el => [...el, real[0].place_name])
       // props.setSelectPlace(el => console.lo)
       props.setServerData(el=>[...el,real[0]])

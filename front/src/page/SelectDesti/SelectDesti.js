@@ -52,6 +52,7 @@ const SelectDesti = () =>{
     const [zoom, setZoom] = useState(11)
     //관광지, 맛집,tmo, 숙박을 눌렀을시 버튼 색깔 변하게 하는것
     const [num,setNum] = useState(-1)
+    const [secondNum, setSecondNum] =useState(false)
 
 
     useEffect(()=>{
@@ -515,7 +516,7 @@ return(
                     }}
                 >{onOff}</div>
             </S.MilSale>
-            <S.SelectPlace onClick={()=>openModalHandler()}>내가 선택한 여행지 {selectPlace.length} <p>/5</p> <MdOutlineArrowDropDownCircle color='#55B586' size={20}/></S.SelectPlace>
+            <S.SelectPlace onClick={()=>openModalHandler()} style={{border:(secondNum?'2px solid #F9CF00':'2px solid #55B586')}}>내가 선택한 여행지 {selectPlace.length} <p>/5</p> <MdOutlineArrowDropDownCircle color='#55B586' size={20}/></S.SelectPlace>
             <NaverMap 
                 curlocal={curlocal}
                 curlength={curlength}
@@ -526,6 +527,8 @@ return(
                 selectPlace={selectPlace}
                 zoom={zoom}
                 setServerData={setServerData}
+                secondNum={secondNum} 
+                setSecondNum={setSecondNum}
                 />
         <S.ShortRoute onClick={shortRoute}><h3><AiOutlineSearch size={20}/>최적경로 검색</h3>
         <S.Svg><AiOutlineRight size={20}/></S.Svg></S.ShortRoute>
