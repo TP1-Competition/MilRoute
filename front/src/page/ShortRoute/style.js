@@ -127,5 +127,7 @@ export const Odsay = styled.div`
   p {
     width: 50%;
     font-size: 10px;
+    text-align: right;
+    padding-right: 3%;
   }
 `;
