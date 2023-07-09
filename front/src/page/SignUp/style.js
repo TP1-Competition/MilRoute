@@ -58,14 +58,9 @@ export const SignUpForm = styled.form`
   padding: 5%;
   height: 100%;
 
-  display: grid;
-  grid-template-rows: 70% 0.2fr;
-  grid-template-areas:
-    'content2'
-    'footer';
 `;
 export const InputWrapper = styled.div`
-  grid-area: content2;
+  height: 100%;
 `;
 
 export const SignUpLabel = styled.label`
@@ -97,12 +92,8 @@ export const SignUpSameEmailError = styled.p`
 `;
 
 export const Footer = styled.div`
-  grid-area: footer;
   ${({ theme }) => theme.common.flexCenter};
   height: 100%;
-
-  flex-direction: column;
-  justify-content: space-between;
 `;
 
 export const SignUpSubmitButton = styled.button`
@@ -117,7 +108,6 @@ export const SignUpSubmitButton = styled.button`
   font-weight: 700;
   text-align: center;
 
-  /* margin-bottom: 10%; */
 `;
 
 /* 회원가입 축하 페이지 */

@@ -114,4 +114,8 @@ export const SearchBtn = styled.button`
     margin-top: 4%;
     border-radius: 20px;
     border: none;
+    @media (max-width: 535px) { 
+      margin-top: 2%;
+
+  }
 `;
