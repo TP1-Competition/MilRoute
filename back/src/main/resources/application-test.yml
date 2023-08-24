@@ -1,9 +1,4 @@
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/H2DB/test;MODE=MYSQL
-    username: sa
-
   jpa:
     properties:
       hibernate:
@@ -18,3 +13,9 @@ logging:
       springframework:
         security: DEBUG
         web: info
+
+odsay:
+  secret-key: gU/0UOBChjTBxg+fxexxWL43Rg/cFvbeAkx
+
+jwt:
+  secret-key: 52b50b2535067804540c89c9eec8359fa77b1a1845d7a0c3c97f3588d1f967c340b0e7c67d219bba1ee5bb008a996463c08c5a9d94cc95318aa1f57ec5149618
