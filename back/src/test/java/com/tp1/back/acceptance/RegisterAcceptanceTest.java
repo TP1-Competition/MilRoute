@@ -8,9 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-
-import java.nio.charset.StandardCharsets;
 
 import static io.restassured.RestAssured.given;
 
@@ -32,7 +29,7 @@ class RegisterAcceptanceTest extends AcceptanceTest {
         // when, then
         given()
                 .log().all()
-                .contentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8).toString())
+                .contentType(APPLICATION_JSON_UTF_8.toString())
                 .body(request.toString())
         .when()
                 .post("/api/v1/users/register")
@@ -54,7 +51,7 @@ class RegisterAcceptanceTest extends AcceptanceTest {
         // when, then
         given()
                 .log().all()
-                .contentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8).toString())
+                .contentType(APPLICATION_JSON_UTF_8.toString())
                 .body(request.toString())
         .when()
                 .post("/api/v1/users/register")
@@ -77,7 +74,7 @@ class RegisterAcceptanceTest extends AcceptanceTest {
         // when, then
         given()
                 .log().all()
-                .contentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8).toString())
+                .contentType(APPLICATION_JSON_UTF_8.toString())
                 .body(request.toString())
                 .when()
                 .post("/api/v1/users/register")
