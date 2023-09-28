@@ -10,13 +10,18 @@
 
 ## 🖥️ 시연 영상
 
+## 🎨 Figma Link
+[피그마 링크](https://www.figma.com/file/lXc6aYQlxV0PVZXufmd8mU/TP1Team-WireFrame-%26-Design?type=design&mode=design&t=5Ky5CC1RDYy9AtbN-0)
 
 ## 📦 사용 스택
 ### Front-end
 
-[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1695874493568?alt=media&token=95496cd4-d2e3-45f7-9dfe-1fb7da098cd6)](https://github.com/msdio/stackticon)
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1695882466636?alt=media&token=ca596cb3-ce85-4f84-b4fd-b2fbbfa6ec09)](https://github.com/msdio/stackticon)
 
 ### Back-end
+
+### team communication
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1695882346285?alt=media&token=15e8e304-87a2-44b3-bfe5-38983a7c6abf)](https://github.com/msdio/stackticon)
 
 ## 👥 팀원
 |                   Frontend                    |                      Frontend                       |                     Backend                      | 
