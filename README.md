@@ -9,6 +9,7 @@
 장병들의 즐거운 외출/외박을 위한 국방 분야 공공데이터 기반의 군 할인혜택 정보 제공, 최적 경로 제공 및 출발지와 도착지 입력하고 대중교통을 이용할 때, 경로별 소요되는 예상 시간과 금액 정보를 제공해주는 서비스입니다.
 
 ## 🖥️ 시연 영상
+[![시연 영상 바로가기](http://img.youtube.com/vi/WEgfeWAgKgo/0.jpg)](https://www.youtube.com/watch?v=WEgfeWAgKgo)
 
 ## 🎨 Figma Link
 [피그마 링크](https://www.figma.com/file/lXc6aYQlxV0PVZXufmd8mU/TP1Team-WireFrame-%26-Design?type=design&mode=design&t=5Ky5CC1RDYy9AtbN-0)
