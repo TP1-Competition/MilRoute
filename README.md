@@ -24,6 +24,8 @@
 
 ### Back-end
 
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1695911319614?alt=media&token=beb4b6c9-8da8-4644-a45c-606d09abea38)](https://github.com/msdio/stackticon)
+
 ### team communication
 [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1695882346285?alt=media&token=15e8e304-87a2-44b3-bfe5-38983a7c6abf)](https://github.com/msdio/stackticon)
 
